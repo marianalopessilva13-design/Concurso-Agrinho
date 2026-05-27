@@ -1,62 +1,103 @@
-const sections = document.querySelectorAll("section");
+// LOADING SCREEN
 
-window.addEventListener("scroll", () => {
-  sections.forEach((section) => {
+window.addEventListener("load", () => {
 
-    const sectionTop = section.getBoundingClientRect().top;
+  const loader = document.getElementById("loader");
 
-    if(sectionTop < window.innerHeight - 100){
-      section.classList.add("show");
+  setTimeout(() => {
+    loader.style.display = "none";
+  }, 2000);
+
+});
+
+// AOS
+
+AOS.init({
+  duration:1200,
+  once:true
+});
+
+// PARTICLES
+
+particlesJS("particles-js", {
+
+  particles: {
+    number: {
+      value: 80
+    },
+
+    color: {
+      value: "#7CFFB2"
+    },
+
+    shape: {
+      type: "circle"
+    },
+
+    opacity: {
+      value: 0.5
+    },
+
+    size: {
+      value: 3
+    },
+
+    move: {
+      enable: true,
+      speed: 2
     }
-
-  });
-});
-
-
-// Efeito suave no menu
-
-const links = document.querySelectorAll("nav a");
-
-links.forEach(link => {
-
-  link.addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    const id = this.getAttribute("href");
-
-    const section = document.querySelector(id);
-
-    section.scrollIntoView({
-      behavior:"smooth"
-    });
-
-  });
-
-});
-
-
-// Botão voltar ao topo
-
-const btnTop = document.createElement("button");
-
-btnTop.innerHTML = "↑";
-
-document.body.appendChild(btnTop);
-
-btnTop.classList.add("top-btn");
-
-window.addEventListener("scroll", () => {
-
-  if(window.scrollY > 500){
-    btnTop.classList.add("active");
-  }else{
-    btnTop.classList.remove("active");
   }
 
 });
 
-btnTop.addEventListener("click", () => {
+// TEXTO DINÂMICO
+
+const texts = [
+  "Tecnologia e natureza caminhando juntas.",
+  "O agro sustentável transforma o futuro.",
+  "Produzir mais preservando o planeta.",
+  "Inovação agrícola para novas gerações."
+];
+
+const changingText = document.getElementById("changing-text");
+
+let textIndex = 0;
+
+setInterval(() => {
+
+  textIndex++;
+
+  if(textIndex >= texts.length){
+    textIndex = 0;
+  }
+
+  changingText.style.opacity = 0;
+
+  setTimeout(() => {
+
+    changingText.innerHTML = texts[textIndex];
+
+    changingText.style.opacity = 1;
+
+  },500);
+
+},4000);
+
+// BOTÃO TOPO
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+
+  if(window.scrollY > 400){
+    topBtn.style.display = "block";
+  }else{
+    topBtn.style.display = "none";
+  }
+
+});
+
+topBtn.addEventListener("click", () => {
 
   window.scrollTo({
     top:0,
@@ -65,41 +106,47 @@ btnTop.addEventListener("click", () => {
 
 });
 
+// CONTADORES
 
-// Efeito digitando no título
+const counters = document.querySelectorAll(".counter");
 
-const title = document.querySelector(".hero-text h2");
+counters.forEach(counter => {
 
-const text = "Agro Forte, Futuro Sustentável";
+  counter.innerText = "0";
 
-let index = 0;
+  const updateCounter = () => {
 
-title.innerHTML = "";
+    const target = +counter.getAttribute("data-target");
 
-function typingEffect(){
+    const current = +counter.innerText;
 
-  if(index < text.length){
+    const increment = target / 100;
 
-    title.innerHTML += text.charAt(index);
+    if(current < target){
 
-    index++;
+      counter.innerText = `${Math.ceil(current + increment)}%`;
 
-    setTimeout(typingEffect, 80);
+      setTimeout(updateCounter,20);
 
-  }
+    }else{
 
-}
+      counter.innerText = `${target}%`;
 
-typingEffect();
+    }
 
+  };
 
-// Cards com brilho ao mover mouse
+  updateCounter();
 
-const cards = document.querySelectorAll(".card");
+});
+
+// EFEITO MOUSE NOS CARDS
+
+const cards = document.querySelectorAll(".tech-card");
 
 cards.forEach(card => {
 
-  card.addEventListener("mousemove", (e) => {
+  card.addEventListener("mousemove",(e)=>{
 
     const rect = card.getBoundingClientRect();
 
@@ -107,53 +154,17 @@ cards.forEach(card => {
     const y = e.clientY - rect.top;
 
     card.style.background = `
-      radial-gradient(
-        circle at ${x}px ${y}px,
-        rgba(124,255,178,0.25),
-        #0d2018
-      )
+      radial-gradient(circle at ${x}px ${y}px,
+      rgba(124,255,178,0.2),
+      #10241b)
     `;
 
   });
 
-  card.addEventListener("mouseleave", () => {
+  card.addEventListener("mouseleave",()=>{
 
-    card.style.background = "#0d2018";
+    card.style.background = "#10241b";
 
   });
 
 });
-
-
-// Frases sustentáveis automáticas
-
-const phrases = [
-  "Tecnologia e natureza caminhando juntas.",
-  "Produzir mais preservando o planeta.",
-  "O futuro sustentável começa no campo.",
-  "Inovação agrícola para novas gerações."
-];
-
-const subtitle = document.querySelector(".hero-text p");
-
-let phraseIndex = 0;
-
-setInterval(() => {
-
-  phraseIndex++;
-
-  if(phraseIndex >= phrases.length){
-    phraseIndex = 0;
-  }
-
-  subtitle.style.opacity = 0;
-
-  setTimeout(() => {
-
-    subtitle.innerHTML = phrases[phraseIndex];
-
-    subtitle.style.opacity = 1;
-
-  }, 500);
-
-}, 4000);
