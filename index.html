@@ -1,175 +1,435 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Agro Forte - Futuro Sustentável</title>
+  <title>Agro Forte • Futuro Sustentável</title>
 
-  <link rel="stylesheet" href="style.css">
-
+  <!-- FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <nav>
-    <h1>AGRO<span>FORTE</span></h1>
+<!-- LOADING SCREEN -->
 
-    <ul>
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-circle"></div>
+    <h1>AGRO<span>FORTE</span></h1>
+  </div>
+</div>
+
+<!-- PARTICLES -->
+
+<div id="particles-js"></div>
+
+<!-- HEADER -->
+
+<header>
+
+  <nav id="navbar">
+
+    <div class="logo">
+      AGRO<span>FORTE</span>
+    </div>
+
+    <ul class="menu">
       <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#tecnologia">Tecnologias</a></li>
+      <li><a href="#tecnologias">Tecnologias</a></li>
+      <li><a href="#infograficos">Infográficos</a></li>
       <li><a href="#artigos">Artigos</a></li>
+      <li><a href="#galeria">Galeria</a></li>
       <li><a href="#videos">Vídeos</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#noticias">Novidades</a></li>
     </ul>
+
   </nav>
 
-  <div class="hero">
+  <!-- HERO -->
+
+  <section class="hero">
+
     <div class="hero-text" data-aos="fade-right">
-      <h2>
+
+      <h1>
         Agro Forte,<br>
         Futuro Sustentável
-      </h2>
+      </h1>
 
-      <p>
+      <p id="changing-text">
         Equilíbrio entre produção agrícola,
         tecnologia e preservação ambiental.
       </p>
 
-      <a href="#sobre" class="btn">Explorar</a>
+      <a href="#sobre" class="btn">
+        Explorar Futuro
+      </a>
+
     </div>
 
     <div class="hero-image" data-aos="fade-left">
-      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200" alt="">
+
+      <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200" alt="Agro">
+
     </div>
-  </div>
+
+  </section>
+
 </header>
 
-<section id="sobre" class="glass">
-  <div data-aos="fade-up">
-    <h2>O Futuro do Campo</h2>
+<!-- SOBRE -->
 
+<section id="sobre" class="glass">
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>O Futuro do Agro</h2>
     <p>
-      A agricultura sustentável utiliza tecnologias
-      inteligentes para aumentar a produtividade
-      sem prejudicar o meio ambiente.
+      Produzir alimentos de forma sustentável é o maior desafio da humanidade.
     </p>
   </div>
-</section>
 
-<section id="tecnologia">
-  <h2 data-aos="fade-up">Tecnologias Sustentáveis</h2>
+  <div class="about-grid">
 
-  <div class="cards">
-
-    <div class="card" data-aos="zoom-in">
-      <img src="https://cdn-icons-png.flaticon.com/512/2909/2909763.png">
-      <h3>Irrigação Inteligente</h3>
+    <div class="about-card" data-aos="zoom-in">
+      <i class="fa-solid fa-leaf"></i>
+      <h3>Sustentabilidade</h3>
       <p>
-        Sensores monitoram o solo e reduzem
-        desperdício de água.
+        A agricultura moderna busca reduzir impactos ambientais,
+        preservar recursos naturais e aumentar a produtividade.
       </p>
     </div>
 
-    <div class="card" data-aos="zoom-in">
-      <img src="https://cdn-icons-png.flaticon.com/512/3079/3079165.png">
-      <h3>Drones Agrícolas</h3>
+    <div class="about-card" data-aos="zoom-in">
+      <i class="fa-solid fa-microchip"></i>
+      <h3>Tecnologia</h3>
       <p>
-        Monitoramento preciso para maior eficiência
-        e menos impacto ambiental.
+        Inteligência artificial, sensores e automação estão
+        revolucionando o campo.
       </p>
     </div>
 
-    <div class="card" data-aos="zoom-in">
-      <img src="https://cdn-icons-png.flaticon.com/512/628/628324.png">
-      <h3>Energia Limpa</h3>
+    <div class="about-card" data-aos="zoom-in">
+      <i class="fa-solid fa-globe"></i>
+      <h3>Preservação</h3>
       <p>
-        Uso de energia solar e fontes renováveis
-        no campo.
+        O equilíbrio entre natureza e produção garante
+        um futuro sustentável para as próximas gerações.
       </p>
     </div>
 
   </div>
+
 </section>
 
-<section id="artigos" class="glass">
-  <h2 data-aos="fade-up">Artigos e Informações</h2>
+<!-- TECNOLOGIAS -->
 
-  <div class="articles">
+<section id="tecnologias">
 
-    <article data-aos="fade-right">
+  <div class="section-title">
+    <h2 data-aos="fade-up">Tecnologias Sustentáveis</h2>
+  </div>
+
+  <div class="tech-grid">
+
+    <div class="tech-card" data-aos="flip-left">
+      <i class="fa-solid fa-satellite"></i>
       <h3>Agricultura de Precisão</h3>
       <p>
-        Tecnologias digitais ajudam produtores
-        a reduzir desperdícios e melhorar colheitas.
+        Monitoramento inteligente para reduzir desperdícios
+        e aumentar eficiência produtiva.
       </p>
+    </div>
+
+    <div class="tech-card" data-aos="flip-left">
+      <i class="fa-solid fa-robot"></i>
+      <h3>IA no Campo</h3>
+      <p>
+        Inteligência artificial auxiliando previsões climáticas
+        e produtividade agrícola.
+      </p>
+    </div>
+
+    <div class="tech-card" data-aos="flip-left">
+      <i class="fa-solid fa-helicopter"></i>
+      <h3>Drones Agrícolas</h3>
+      <p>
+        Pulverização inteligente e análise precisa das plantações.
+      </p>
+    </div>
+
+    <div class="tech-card" data-aos="flip-left">
+      <i class="fa-solid fa-droplet"></i>
+      <h3>Irrigação Inteligente</h3>
+      <p>
+        Uso eficiente da água através de sensores automatizados.
+      </p>
+    </div>
+
+    <div class="tech-card" data-aos="flip-left">
+      <i class="fa-solid fa-solar-panel"></i>
+      <h3>Energia Solar Rural</h3>
+      <p>
+        Fazendas sustentáveis utilizando energia limpa e renovável.
+      </p>
+    </div>
+
+    <div class="tech-card" data-aos="flip-left">
+      <i class="fa-solid fa-temperature-half"></i>
+      <h3>Sensores Climáticos</h3>
+      <p>
+        Dados em tempo real para decisões agrícolas mais eficientes.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- INFOGRÁFICOS -->
+
+<section id="infograficos" class="glass">
+
+  <div class="section-title">
+    <h2 data-aos="fade-up">Dados Sustentáveis</h2>
+  </div>
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <h3 class="counter" data-target="80">0</h3>
+      <p>Economia de Água</p>
+    </div>
+
+    <div class="stat-card">
+      <h3 class="counter" data-target="65">0</h3>
+      <p>Redução de Carbono</p>
+    </div>
+
+    <div class="stat-card">
+      <h3 class="counter" data-target="90">0</h3>
+      <p>Eficiência Tecnológica</p>
+    </div>
+
+    <div class="stat-card">
+      <h3 class="counter" data-target="75">0</h3>
+      <p>Energia Renovável</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ARTIGOS -->
+
+<section id="artigos">
+
+  <div class="section-title">
+    <h2 data-aos="fade-up">Artigos e Informações</h2>
+  </div>
+
+  <div class="article-grid">
+
+    <article class="article-card" data-aos="fade-right">
+
+      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200">
+
+      <div class="article-content">
+
+        <h3>Sustentabilidade no Agro</h3>
+
+        <p>
+          O desenvolvimento sustentável no campo envolve tecnologia,
+          preservação ambiental e produção responsável.
+          O agro moderno investe em soluções inteligentes
+          para produzir mais com menos impacto.
+        </p>
+
+      </div>
+
     </article>
 
-    <article data-aos="fade-left">
-      <h3>Preservação Ambiental</h3>
-      <p>
-        Produzir alimentos e proteger a natureza
-        podem caminhar juntos.
-      </p>
+    <article class="article-card" data-aos="fade-left">
+
+      <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200">
+
+      <div class="article-content">
+
+        <h3>Agricultura Regenerativa</h3>
+
+        <p>
+          Técnicas regenerativas ajudam a recuperar o solo,
+          preservar recursos naturais e aumentar a biodiversidade.
+        </p>
+
+      </div>
+
     </article>
 
   </div>
+
 </section>
+
+<!-- GALERIA -->
+
+<section id="galeria" class="glass">
+
+  <div class="section-title">
+    <h2 data-aos="fade-up">Galeria do Futuro</h2>
+  </div>
+
+  <div class="gallery-grid">
+
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200">
+    <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?q=80&w=1200">
+    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200">
+    <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=1200">
+
+  </div>
+
+</section>
+
+<!-- VÍDEOS -->
 
 <section id="videos">
-  <h2 data-aos="fade-up">Vídeos Educativos</h2>
 
-  <div class="video-container" data-aos="zoom-in">
-    <iframe width="560" height="315"
-      src="https://www.youtube.com/embed/ScMzIvxBSi4"
-      title="YouTube video player"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
+  <div class="section-title">
+    <h2 data-aos="fade-up">Vídeos Educativos</h2>
   </div>
+
+  <div class="video-grid">
+
+    <iframe src="https://www.youtube.com/embed/ScMzIvxBSi4"
+    title="YouTube video"
+    allowfullscreen></iframe>
+
+    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"
+    title="YouTube video"
+    allowfullscreen></iframe>
+
+  </div>
+
 </section>
 
-<section class="news glass">
-  <h2 data-aos="fade-up">Novidades do Agro</h2>
+<!-- TIMELINE -->
+
+<section id="timeline" class="glass">
+
+  <div class="section-title">
+    <h2 data-aos="fade-up">Linha do Tempo do Agro</h2>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <span>1950</span>
+      <p>Mecanização agrícola tradicional.</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>1990</span>
+      <p>Início da agricultura de precisão.</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>2025</span>
+      <p>Uso intenso de IA e drones agrícolas.</p>
+    </div>
+
+    <div class="timeline-item">
+      <span>2050</span>
+      <p>Agro totalmente sustentável e inteligente.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- NOTÍCIAS -->
+
+<section id="noticias">
+
+  <div class="section-title">
+    <h2 data-aos="fade-up">Novidades do Agro</h2>
+  </div>
 
   <div class="news-grid">
 
-    <div class="news-card" data-aos="flip-left">
-      <h3>IA no Campo</h3>
+    <div class="news-card">
+      <h3>IA revoluciona fazendas</h3>
       <p>
-        Inteligência artificial melhora previsões
-        agrícolas e reduz impactos ambientais.
+        Sistemas inteligentes ajudam produtores
+        a prever clima e produtividade.
       </p>
     </div>
 
-    <div class="news-card" data-aos="flip-right">
-      <h3>Fazendas Sustentáveis</h3>
+    <div class="news-card">
+      <h3>Energia limpa rural cresce</h3>
       <p>
-        Cresce o uso de práticas ecológicas
-        em propriedades rurais.
+        Fazendas sustentáveis utilizam cada vez mais energia solar.
+      </p>
+    </div>
+
+    <div class="news-card">
+      <h3>Drones agrícolas avançam</h3>
+      <p>
+        Monitoramento aéreo reduz desperdícios e protege o meio ambiente.
       </p>
     </div>
 
   </div>
+
 </section>
 
+<!-- FOOTER -->
+
 <footer>
+
+  <h2>AGRO<span>FORTE</span></h2>
+
   <p>
-    Projeto Agrinho 2026 • Agro Forte • Futuro Sustentável
+    “O futuro sustentável começa no campo.”
   </p>
+
+  <div class="socials">
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+    <i class="fab fa-youtube"></i>
+    <i class="fab fa-linkedin"></i>
+  </div>
+
+  <small>
+    Projeto desenvolvido para o Concurso Agrinho 2026
+  </small>
+
 </footer>
+
+<!-- BOTÃO TOPO -->
+
+<button id="topBtn">
+  ↑
+</button>
+
+<!-- SCRIPTS -->
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-<script>
-  AOS.init({
-    duration: 1200
-  });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
