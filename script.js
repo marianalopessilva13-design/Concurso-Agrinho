@@ -1,53 +1,47 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     
-    // ==========================================================================
-    // CONTROLE DO MENU MOBILE (HAMBÚRGUER)
-    // ==========================================================================
-    const menuToggle = document.getElementById('mobile-menu');
-    const navMenu = document.querySelector('.nav-menu');
+    // ==========================================
+    // 1. ANIMAÇÃO DOS NÚMEROS (CONTADOR)
+    // ==========================================
+    const iniciarContador = (contador) => {
+        const target = +contador.getAttribute("data-target");
+        const numAtual = +contador.innerText;
+        
+        // Define a velocidade da contagem (quanto menor o divisor, mais rápido)
+        const incremento = target / 50; 
 
-    menuToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('open');
-        // Altera o ícone dinamicamente para maior acessibilidade visual
-        const icon = menuToggle.querySelector('i');
-        if (navMenu.classList.contains('open')) {
-            icon.className = 'fa-solid fa-xmark';
+        if (numAtual < target) {
+            contador.innerText = Math.ceil(numAtual + incremento);
+            setTimeout(() => iniciarContador(contador), 30);
         } else {
-            icon.className = 'fa-solid fa-bars';
+            contador.innerText = target;
         }
-    });
+    };
 
-    // Fecha o menu ao clicar em qualquer item (Single Page Navigation)
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('open');
-            menuToggle.querySelector('i').className = 'fa-solid fa-bars';
-        });
-    });
+    // ==========================================
+    // 2. DETECTOR DE ROLAGEM (EFEITOS AO ROLAR A TELA)
+    // ==========================================
+    const elementosParaAnimar = document.querySelectorAll(".animar");
+    const contadores = document.querySelectorAll(".num");
+    let contadoresAtivados = false;
 
-    // ==========================================================================
-    // SISTEMA DE INTERSEÇÃO E HIGHLIGHT DO MENU (SCROLL MONITOR)
-    // ==========================================================================
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const seletorDeVisibilidade = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Se o elemento estiver visível na tela
+            if (entry.isIntersecting) {
+                
+                // Ativa o efeito esmaecido (Fade-in)
+                entry.target.classList.add("visivel");
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
+                // Se for a seção de dados, dispara os contadores uma única vez
+                if (entry.target.id === "dados" && !contadoresAtivados) {
+                    contadores.forEach(contador => iniciarContador(contador));
+                    contadoresAtivados = true;
+                }
             }
         });
+    }, { threshold: 0.2 }); // Dispara quando 20% da seção aparecer na tela
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    });
-
-    // ==========================================================================
-    // CONTADORES NUMÉRICOS ANIMADOS (DADOS ESTAT
+    // Aplica o observador em todas as seções configuradas
+    elementosParaAnimar.forEach(el => seletorDeVisibilidade.observe(el));
+});
