@@ -1,170 +1,771 @@
-// LOADING SCREEN
+/* ==========================================
+   AGRINHO 2026
+   SCRIPT PRINCIPAL
+========================================== */
+
+/* LOADER */
 
 window.addEventListener("load", () => {
+    setTimeout(() => {
+        const loader = document.getElementById("loader");
+        if(loader){
+            loader.style.opacity = "0";
 
-  const loader = document.getElementById("loader");
-
-  setTimeout(() => {
-    loader.style.display = "none";
-  }, 2000);
-
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 800);
+        }
+    }, 2200);
 });
 
-// AOS
+/* ==========================================
+   CURSOR PERSONALIZADO
+========================================== */
 
-AOS.init({
-  duration:1200,
-  once:true
-});
+const cursor = document.querySelector(".cursor");
 
-// PARTICLES
+document.addEventListener("mousemove", e => {
 
-particlesJS("particles-js", {
-
-  particles: {
-    number: {
-      value: 80
-    },
-
-    color: {
-      value: "#7CFFB2"
-    },
-
-    shape: {
-      type: "circle"
-    },
-
-    opacity: {
-      value: 0.5
-    },
-
-    size: {
-      value: 3
-    },
-
-    move: {
-      enable: true,
-      speed: 2
+    if(cursor){
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
     }
-  }
 
 });
 
-// TEXTO DINÂMICO
+/* ==========================================
+   PARTICULAS
+========================================== */
 
-const texts = [
-  "Tecnologia e natureza caminhando juntas.",
-  "O agro sustentável transforma o futuro.",
-  "Produzir mais preservando o planeta.",
-  "Inovação agrícola para novas gerações."
+const canvas = document.getElementById("particles");
+
+if(canvas){
+
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+class Particle{
+
+    constructor(){
+
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+
+        this.size = Math.random() * 3 + 1;
+
+        this.speedX = (Math.random() - 0.5) * 1;
+        this.speedY = (Math.random() - 0.5) * 1;
+    }
+
+    update(){
+
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if(this.x > canvas.width) this.x = 0;
+        if(this.x < 0) this.x = canvas.width;
+
+        if(this.y > canvas.height) this.y = 0;
+        if(this.y < 0) this.y = canvas.height;
+    }
+
+    draw(){
+
+        ctx.beginPath();
+
+        ctx.arc(
+            this.x,
+            this.y,
+            this.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+        "rgba(46,204,113,0.8)";
+
+        ctx.fill();
+    }
+}
+
+function createParticles(){
+
+    particles = [];
+
+    for(let i=0;i<120;i++){
+
+        particles.push(
+            new Particle()
+        );
+    }
+}
+
+createParticles();
+
+function animateParticles(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    particles.forEach(p=>{
+
+        p.update();
+        p.draw();
+
+    });
+
+    requestAnimationFrame(
+        animateParticles
+    );
+}
+
+animateParticles();
+
+window.addEventListener(
+    "resize",
+    ()=>{
+
+        canvas.width =
+        window.innerWidth;
+
+        canvas.height =
+        window.innerHeight;
+
+        createParticles();
+    }
+);
+
+}
+
+/* ==========================================
+   SCROLL REVEAL
+========================================== */
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+function revealElements(){
+
+    reveals.forEach(el=>{
+
+        const top =
+        el.getBoundingClientRect().top;
+
+        const trigger =
+        window.innerHeight - 100;
+
+        if(top < trigger){
+
+            el.classList.add("active");
+        }
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    revealElements
+);
+
+revealElements();
+
+/* ==========================================
+   CONTADORES
+========================================== */
+
+const counters =
+document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+    const target =
+    Number(counter.dataset.target);
+
+    let count = 0;
+
+    const update = ()=>{
+
+        const increment =
+        target / 120;
+
+        count += increment;
+
+        if(count < target){
+
+            counter.innerText =
+            Math.floor(count);
+
+            requestAnimationFrame(update);
+
+        }else{
+
+            counter.innerText =
+            target;
+        }
+    };
+
+    update();
+
+});
+
+/* ==========================================
+   MAPA INTERATIVO
+========================================== */
+
+const regionInfo =
+document.getElementById("regionInfo");
+
+const regions = {
+
+"Norte":
+"Projetos voltados à conservação da Amazônia e bioeconomia.",
+
+"Nordeste":
+"Uso eficiente da água e agricultura resiliente ao clima.",
+
+"Centro-Oeste":
+"Produção de grãos com agricultura de precisão.",
+
+"Sudeste":
+"Inovação tecnológica e sustentabilidade agrícola.",
+
+"Sul":
+"Integração lavoura-pecuária-floresta e energias renováveis."
+
+};
+
+document
+.querySelectorAll(".region-btn")
+.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+    const region =
+    btn.dataset.region;
+
+    regionInfo.innerHTML = `
+        <h3>${region}</h3>
+        <p>${regions[region]}</p>
+    `;
+});
+
+});
+
+/* ==========================================
+   QUIZ
+========================================== */
+
+const quizData = [
+
+{
+question:
+"Qual prática reduz o uso de água?",
+
+answers:[
+"Agricultura de Precisão",
+"Queimada",
+"Desmatamento",
+"Monocultura"
+],
+
+correct:0
+},
+
+{
+question:
+"Qual tecnologia monitora lavouras do céu?",
+
+answers:[
+"Drones",
+"Tratores antigos",
+"Arados",
+"Foices"
+],
+
+correct:0
+},
+
+{
+question:
+"Qual energia é renovável?",
+
+answers:[
+"Solar",
+"Carvão",
+"Petróleo",
+"Diesel"
+],
+
+correct:0
+}
+
 ];
 
-const changingText = document.getElementById("changing-text");
+let currentQuestion = 0;
+let score = 0;
 
-let textIndex = 0;
+const questionEl =
+document.getElementById("question");
 
-setInterval(() => {
+const answersEl =
+document.getElementById("answers");
 
-  textIndex++;
+const nextBtn =
+document.getElementById("nextQuestion");
 
-  if(textIndex >= texts.length){
-    textIndex = 0;
-  }
+const progressBar =
+document.querySelector(
+"#progressBar span"
+);
 
-  changingText.style.opacity = 0;
+function loadQuestion(){
 
-  setTimeout(() => {
+if(!questionEl) return;
 
-    changingText.innerHTML = texts[textIndex];
+const q =
+quizData[currentQuestion];
 
-    changingText.style.opacity = 1;
+questionEl.innerText =
+q.question;
 
-  },500);
+answersEl.innerHTML = "";
 
-},4000);
+q.answers.forEach(
+(answer,index)=>{
 
-// BOTÃO TOPO
+const btn =
+document.createElement("button");
 
-const topBtn = document.getElementById("topBtn");
+btn.classList.add(
+"answer-btn"
+);
 
-window.addEventListener("scroll", () => {
+btn.innerText = answer;
 
-  if(window.scrollY > 400){
-    topBtn.style.display = "block";
-  }else{
-    topBtn.style.display = "none";
-  }
+btn.addEventListener(
+"click",
+()=>{
+
+if(index === q.correct){
+
+score++;
+btn.style.background =
+"#2ecc71";
+
+}else{
+
+btn.style.background =
+"#e74c3c";
+}
+
+document
+.querySelectorAll(
+".answer-btn"
+)
+.forEach(
+b=>b.disabled=true
+);
+
+}
+);
+
+answersEl.appendChild(btn);
+
+}
+);
+
+progressBar.style.width =
+((currentQuestion)
+/quizData.length)
+*100 + "%";
+
+}
+
+if(questionEl){
+
+loadQuestion();
+
+nextBtn.addEventListener(
+"click",
+()=>{
+
+currentQuestion++;
+
+if(
+currentQuestion <
+quizData.length
+){
+
+loadQuestion();
+
+}else{
+
+questionEl.innerHTML =
+`Resultado: ${score}/${quizData.length}`;
+
+answersEl.innerHTML = "";
+
+nextBtn.style.display =
+"none";
+
+progressBar.style.width =
+"100%";
+
+}
+}
+);
+
+}
+
+/* ==========================================
+   SIMULADOR
+========================================== */
+
+const simulateBtn =
+document.getElementById(
+"simulate"
+);
+
+if(simulateBtn){
+
+simulateBtn.addEventListener(
+"click",
+()=>{
+
+const prod =
+Number(
+document.getElementById(
+"prod"
+).value
+);
+
+const tec =
+Number(
+document.getElementById(
+"tec"
+).value
+);
+
+const water =
+Math.floor(
+tec * 1.5
+);
+
+const carbon =
+Math.floor(
+100 - tec
+);
+
+const impact =
+Math.floor(
+(prod + tec) / 2
+);
+
+document.getElementById(
+"simResult"
+).innerHTML = `
+
+<h3>Resultado da Simulação</h3>
+
+<p>
+🌾 Produção:
+<strong>${prod}%</strong>
+</p>
+
+<p>
+💧 Economia de água:
+<strong>${water}%</strong>
+</p>
+
+<p>
+🌎 Emissão de carbono:
+<strong>${carbon}%</strong>
+</p>
+
+<p>
+♻ Impacto positivo:
+<strong>${impact}%</strong>
+</p>
+
+`;
+
+}
+);
+
+}
+
+/* ==========================================
+   LIGHTBOX
+========================================== */
+
+const lightbox =
+document.querySelector(
+".lightbox"
+);
+
+const lightImg =
+document.querySelector(
+".lightbox img"
+);
+
+document
+.querySelectorAll(
+".gallery img"
+)
+.forEach(img=>{
+
+img.addEventListener(
+"click",
+()=>{
+
+lightbox.classList.add(
+"active"
+);
+
+lightImg.src = img.src;
+
+}
+);
 
 });
 
-topBtn.addEventListener("click", () => {
+if(lightbox){
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+lightbox.addEventListener(
+"click",
+()=>{
+
+lightbox.classList.remove(
+"active"
+);
+
+}
+);
+
+}
+
+/* ==========================================
+   CALCULADORA VERDE
+========================================== */
+
+const calcBtn =
+document.getElementById(
+"calcGreen"
+);
+
+if(calcBtn){
+
+calcBtn.addEventListener(
+"click",
+()=>{
+
+const area =
+Number(
+document.getElementById(
+"area"
+).value
+);
+
+if(!area){
+
+alert(
+"Digite uma área."
+);
+
+return;
+}
+
+const indice =
+Math.min(
+100,
+Math.floor(area * 2)
+);
+
+let nivel =
+"Regular";
+
+if(indice >= 80)
+nivel = "Excelente";
+
+else if(indice >= 50)
+nivel = "Bom";
+
+document.getElementById(
+"greenResult"
+).innerHTML = `
+
+<h3>Índice de Sustentabilidade</h3>
+
+<p>
+Pontuação:
+<strong>${indice}</strong>
+</p>
+
+<p>
+Nível:
+<strong>${nivel}</strong>
+</p>
+
+<p>
+Recomendação:
+Investir em agricultura de precisão,
+energia solar e conservação do solo.
+</p>
+
+`;
 
 });
 
-// CONTADORES
+}
 
-const counters = document.querySelectorAll(".counter");
+/* ==========================================
+   CERTIFICADO
+========================================== */
 
-counters.forEach(counter => {
+const certBtn =
+document.getElementById(
+"generateCertificate"
+);
 
-  counter.innerText = "0";
+if(certBtn){
 
-  const updateCounter = () => {
+certBtn.addEventListener(
+"click",
+()=>{
 
-    const target = +counter.getAttribute("data-target");
+const name =
+document.getElementById(
+"userName"
+).value;
 
-    const current = +counter.innerText;
+if(name.trim() === ""){
 
-    const increment = target / 100;
+alert(
+"Digite seu nome."
+);
 
-    if(current < target){
+return;
+}
 
-      counter.innerText = `${Math.ceil(current + increment)}%`;
+document.getElementById(
+"certificate"
+).innerHTML = `
 
-      setTimeout(updateCounter,20);
+<div class="certificate-card">
 
-    }else{
+<h2>
+🌱 CERTIFICADO
+</h2>
 
-      counter.innerText = `${target}%`;
+<p>
+Compromisso Ambiental
+</p>
 
-    }
+<br>
 
-  };
+<h3>
+${name}
+</h3>
 
-  updateCounter();
+<p>
+Assume simbolicamente o compromisso
+de apoiar práticas sustentáveis
+para um futuro melhor.
+</p>
+
+<br>
+
+<p>
+Agrinho 2026
+</p>
+
+</div>
+
+`;
 
 });
 
-// EFEITO MOUSE NOS CARDS
+}
 
-const cards = document.querySelectorAll(".tech-card");
+/* ==========================================
+   GRÁFICO CANVAS
+========================================== */
 
-cards.forEach(card => {
+const chart =
+document.getElementById(
+"challengeChart"
+);
 
-  card.addEventListener("mousemove",(e)=>{
+if(chart){
 
-    const rect = card.getBoundingClientRect();
+const c =
+chart.getContext("2d");
 
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+const values =
+[80,65,50,75,60];
 
-    card.style.background = `
-      radial-gradient(circle at ${x}px ${y}px,
-      rgba(124,255,178,0.2),
-      #10241b)
-    `;
+const labels =
+[
+"Desmat.",
+"Água",
+"Solo",
+"Biodiv.",
+"CO2"
+];
 
-  });
+function drawChart(){
 
-  card.addEventListener("mouseleave",()=>{
+c.clearRect(
+0,
+0,
+chart.width,
+chart.height
+);
 
-    card.style.background = "#10241b";
+const width = 80;
 
-  });
+values.forEach(
+(v,i)=>{
 
-});
+const x =
+100 + i * 130;
+
+const h =
+v * 3;
+
+c.fillStyle =
+"#2ecc71";
+
+c.fillRect(
+x,
+400-h,
+width,
+h
+);
+
+c.fillStyle =
+"#ffffff";
+
+c.fillText(
+labels[i],
+x,
+430
+);
+
+}
+);
+
+}
+
+drawChart();
+
+}
