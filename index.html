@@ -3,188 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agro Forte e Futuro Sustentável - Concurso Agrinho</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Agro Forte, Futuro Sustentável - Agrinho 2026</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo"><i class="fa-solid fa-seedling"></i> Agrinho<span>2026</span></a>
-            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <nav class="nav-menu">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#equilibrio" class="nav-link">O Equilíbrio</a>
-                <a href="#dados" class="nav-link">Dados</a>
-                <a href="#midia" class="nav-link">Mídia</a>
-                <a href="#game" class="nav-link">Espaço Gamer</a>
-            </nav>
+    <header>
+        <div class="header-container">
+            <h1>Agro Sustentável</h1>
+            <button id="btn-theme" class="btn-extra">Alternar Tema 🌓</button>
         </div>
     </header>
 
-    <section id="home" class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="animate-up">Agro Forte e Futuro Sustentável</h1>
-            <p class="animate-up delay-1">O equilíbrio inteligente entre a alta produtividade no campo e a preservação do nosso meio ambiente.</p>
-            <a href="#equilibrio" class="btn-cta animate-up delay-2">Explore o Futuro <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </section>
-
-    <section id="equilibrio" class="section-container">
-        <div class="section-header">
-            <h2>O Equilíbrio Necessário</h2>
-            <p>Produzir em larga escala e proteger os recursos naturais não são caminhos opostos, mas sim a base da agricultura do amanhã.</p>
-        </div>
-        
-        <div class="grid-three-columns">
-            <div class="info-card">
-                <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
-                <h3>Econômico</h3>
-                <p>Garantia de segurança alimentar Global, gerando empregos, tecnologia de ponta e sustentação econômica para milhares de famílias no campo.</p>
+    <main>
+        <section id="sobre">
+            <h2>O Equilíbrio entre Produção e Meio Ambiente</h2>
+            <p>O grande desafio do século XXI é produzir alimentos de forma eficiente enquanto preservamos os recursos naturais. Tecnologias de precisão e manejo correto do solo garantem o futuro do planeta.</p>
+            <div class="midia-container">
+                <img src="img/agro-sustentavel.jpg" alt="Plantação sustentável com tecnologia de gotejamento">
+                <p class="creditos">Crédito da imagem: Banco de imagens gratuito Freepik / Prompt IA: 'campo de soja sustentável moderno, estilo flat design'</p>
             </div>
-            <div class="info-card">
-                <div class="card-icon"><i class="fa-solid fa-users"></i></div>
-                <h3>Social</h3>
-                <p>Fixação do homem no campo com qualidade de vida, promovendo a educação ambiental desde as primeiras fases escolares e capacitação técnica constante.</p>
-            </div>
-            <div class="info-card">
-                <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
-                <h3>Ambiental</h3>
-                <p>Uso de técnicas regenerativas, rotação de culturas, bioinsumos e preservação rigorosa de matas ciliares e reservas legais obrigatórias.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="dados" class="section-container bg-light">
-        <div class="section-header">
-            <h2>Dados & Métricas Reais</h2>
-            <p>Indicadores que comprovam a evolução e o compromisso da tecnologia agrícola com a sustentabilidade do planeta.</p>
-        </div>
+        <section id="interacao">
+            <h2>Simulador de Economia de Água no Campo</h2>
+            <p>Descubra quantos litros de água podem ser economizados trocando a irrigação convencional pelo gotejamento automatizado em 1 hectare por dia.</p>
+            
+            <form id="form-calculo" onsubmit="return false;">
+                <label for="input-area">Área Cultivada (em hectares):</label>
+                <input type="number" id="input-area" min="1" placeholder="Ex: 5" required>
+                
+                <button type="button" id="btn-calcular">Calcular Economia</button>
+            </form>
 
-        <div class="dados-wrapper">
-            <div class="chart-box">
-                <h3>Ocupação de Terras no Brasil</h3>
-                <div class="chart-container">
-                    <div class="css-chart" style="--p:66; --c:#2d6a4f;">
-                        <span class="chart-value">66%</span>
-                    </div>
-                </div>
-                <div class="chart-legend">
-                    <p><span class="legend-color preservada"></span> Vegetação Preservada e Protegida (66%)</p>
-                    <p><span class="legend-color produtiva"></span> Áreas de Produção Agropecuária (34%)</p>
-                </div>
+            <div id="resultado-container" class="hidden">
+                <p id="texto-resultado"></p>
             </div>
+        </section>
+    </main>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h4 class="counter" data-target="45">0</h4>
-                    <p>Redução média de emissão de CO₂ através do Plantio Direto na palha.</p>
-                </div>
-                <div class="stat-card">
-                    <h4 class="counter" data-target="180">0</h4>
-                    <p>Aumento percentual na adoção de bioinsumos e controle biológico de pragas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="midia" class="section-container">
-        <div class="section-header">
-            <h2>Tecnologia em Campo</h2>
-            <p>Veja como a inovação opera no dia a dia das fazendas sustentáveis de última geração.</p>
-        </div>
-
-        <div class="media-grid">
-            <div class="media-card item-video">
-                <div class="video-placeholder">
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Tecnologia no Campo" allowfullscreen></iframe>
-                </div>
-                <div class="media-info">
-                    <span><i class="fa-solid fa-video"></i> Vídeo Educativo</span>
-                    <h3>O papel da tecnologia no manejo sustentável</h3>
-                </div>
-            </div>
-
-            <div class="media-card">
-                <img src="https://images.unsplash.com/photo-1592982537447-744077110b90?auto=format&fit=crop&w=600&q=80" alt="Monitoramento por Drone">
-                <div class="media-info">
-                    <span><i class="fa-solid fa-camera"></i> Drone de Precisão</span>
-                    <h3>Otimização de insumos por geolocalização.</h3>
-                </div>
-            </div>
-
-            <div class="media-card">
-                <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80" alt="Energia Limpa no Agro">
-                <div class="media-info">
-                    <span><i class="fa-solid fa-camera"></i> Energia Solar</span>
-                    <h3>Matrizes energéticas limpas alimentando a irrigação.</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="game" class="section-container bg-light">
-        <div class="section-header">
-            <h2>Espaço Gamer: Desafio Agrinho</h2>
-            <p>Teste seus conhecimentos sobre o equilíbrio do agro com a natureza e conquiste o selo de Produtor do Futuro!</p>
-        </div>
-
-        <div class="quiz-container">
-            <div id="quiz-start-screen">
-                <i class="fa-solid fa-gamepad game-intro-icon"></i>
-                <h3>Você está pronto para o Desafio?</h3>
-                <p>Responda a perguntas rápidas baseadas em dados reais de agricultura sustentável.</p>
-                <button id="btn-start-quiz" class="btn-cta">Iniciar Jogo</button>
-            </div>
-
-            <div id="quiz-game-screen" class="hide">
-                <div class="quiz-progress-bar"><div id="progress-fill"></div></div>
-                <div class="quiz-header-info">
-                    <span id="question-number">Pergunta 1 de 3</span>
-                    <span id="quiz-score"><i class="fa-solid fa-star"></i> Pontos: 0</span>
-                </div>
-                <h3 id="question-text">Texto da Pergunta Aqui?</h3>
-                <div id="options-container" class="options-grid">
-                    </div>
-            </div>
-
-            <div id="quiz-result-screen" class="hide">
-                <i class="fa-solid fa-trophy trophy-icon"></i>
-                <h3>Resultado do Desafio!</h3>
-                <p id="result-text">Você acertou 0 de 3 perguntas.</p>
-                <p id="result-feedback" class="feedback-msg">Continue estudando para proteger nosso ecossistema!</p>
-                <button id="btn-restart-quiz" class="btn-cta">Jogar Novamente</button>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-info">
-                <h3>Concurso Agrinho 2026</h3>
-                <p>Projeto escolar focado no desenvolvimento da consciência ambiental e valorização da produção sustentável nacional.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Referências Bibliográficas</h4>
-                <ul>
-                    <li><a href="https://www.embrapa.br" target="_blank" rel="noopener"><i class="fa-solid fa-book"></i> EMBRAPA - Dados de Visão de Futuro</a></li>
-                    <li><a href="http://www.sistemafaep.org.br" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i> Sistema FAEP/SENAR - Regulamentos</a></li>
-                    <li><a href="#" target="_blank"><i class="fa-solid fa-file-invoice"></i> Código Florestal Brasileiro (Lei 12.651)</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 - Desenvolvido para fins Educacionais - Concurso Agrinho. Todos os direitos reservados.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 - Desenvolvido por [Seu Nome Completo] para o Concurso Agrinho.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
