@@ -1,465 +1,190 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Agrinho 2026 | Agro Forte e Futuro Sustentável</title>
-
-<meta name="description"
-content="Projeto Agrinho 2026 - Agro Forte e Futuro Sustentável: equilíbrio entre produção e meio ambiente.">
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte e Futuro Sustentável - Concurso Agrinho</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- CURSOR -->
-<div class="cursor"></div>
-
-<!-- LOADER -->
-<div id="loader">
-    <div class="loader-content">
-        <div class="loader-logo">AGRINHO 2026</div>
-        <div class="loader-bar">
-            <span></span>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo"><i class="fa-solid fa-seedling"></i> Agrinho<span>2026</span></a>
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#equilibrio" class="nav-link">O Equilíbrio</a>
+                <a href="#dados" class="nav-link">Dados</a>
+                <a href="#midia" class="nav-link">Mídia</a>
+                <a href="#game" class="nav-link">Espaço Gamer</a>
+            </nav>
         </div>
-    </div>
-</div>
+    </header>
 
-<!-- PARTICULAS -->
-<canvas id="particles"></canvas>
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="animate-up">Agro Forte e Futuro Sustentável</h1>
+            <p class="animate-up delay-1">O equilíbrio inteligente entre a alta produtividade no campo e a preservação do nosso meio ambiente.</p>
+            <a href="#equilibrio" class="btn-cta animate-up delay-2">Explore o Futuro <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </section>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">
-        🌱 AGRINHO 2026
-    </div>
+    <section id="equilibrio" class="section-container">
+        <div class="section-header">
+            <h2>O Equilíbrio Necessário</h2>
+            <p>Produzir em larga escala e proteger os recursos naturais não são caminhos opostos, mas sim a base da agricultura do amanhã.</p>
+        </div>
+        
+        <div class="grid-three-columns">
+            <div class="info-card">
+                <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Econômico</h3>
+                <p>Garantia de segurança alimentar Global, gerando empregos, tecnologia de ponta e sustentação econômica para milhares de famílias no campo.</p>
+            </div>
+            <div class="info-card">
+                <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+                <h3>Social</h3>
+                <p>Fixação do homem no campo com qualidade de vida, promovendo a educação ambiental desde as primeiras fases escolares e capacitação técnica constante.</p>
+            </div>
+            <div class="info-card">
+                <div class="card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                <h3>Ambiental</h3>
+                <p>Uso de técnicas regenerativas, rotação de culturas, bioinsumos e preservação rigorosa de matas ciliares e reservas legais obrigatórias.</p>
+            </div>
+        </div>
+    </section>
 
-    <nav>
-        <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#agro">Agro</a></li>
-            <li><a href="#desafios">Desafios</a></li>
-            <li><a href="#solucoes">Soluções</a></li>
-            <li><a href="#quiz">Quiz</a></li>
-            <li><a href="#simulador">Simulador</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="inicio">
-
-    <video autoplay muted loop playsinline>
-        <source src="https://cdn.coverr.co/videos/coverr-green-field-1561386954324?download=1080p" type="video/mp4">
-    </video>
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-        <span class="tag">
-            Concurso Agrinho 2026
-        </span>
-
-        <h1>
-            AGRO FORTE E FUTURO
-            <span>SUSTENTÁVEL</span>
-        </h1>
-
-        <p>
-            Equilíbrio entre produção agrícola,
-            inovação tecnológica e preservação ambiental.
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#introducao" class="btn-primary">
-                Explorar Projeto
-            </a>
-
-            <a href="#quiz" class="btn-secondary">
-                Fazer Quiz
-            </a>
+    <section id="dados" class="section-container bg-light">
+        <div class="section-header">
+            <h2>Dados & Métricas Reais</h2>
+            <p>Indicadores que comprovam a evolução e o compromisso da tecnologia agrícola com a sustentabilidade do planeta.</p>
         </div>
 
-        <div class="stats">
-
-            <div class="stat">
-                <h2 class="counter" data-target="210">0</h2>
-                <span>Milhões de toneladas</span>
+        <div class="dados-wrapper">
+            <div class="chart-box">
+                <h3>Ocupação de Terras no Brasil</h3>
+                <div class="chart-container">
+                    <div class="css-chart" style="--p:66; --c:#2d6a4f;">
+                        <span class="chart-value">66%</span>
+                    </div>
+                </div>
+                <div class="chart-legend">
+                    <p><span class="legend-color preservada"></span> Vegetação Preservada e Protegida (66%)</p>
+                    <p><span class="legend-color produtiva"></span> Áreas de Produção Agropecuária (34%)</p>
+                </div>
             </div>
 
-            <div class="stat">
-                <h2 class="counter" data-target="500">0</h2>
-                <span>Tecnologias Verdes</span>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4 class="counter" data-target="45">0</h4>
+                    <p>Redução média de emissão de CO₂ através do Plantio Direto na palha.</p>
+                </div>
+                <div class="stat-card">
+                    <h4 class="counter" data-target="180">0</h4>
+                    <p>Aumento percentual na adoção de bioinsumos e controle biológico de pragas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="midia" class="section-container">
+        <div class="section-header">
+            <h2>Tecnologia em Campo</h2>
+            <p>Veja como a inovação opera no dia a dia das fazendas sustentáveis de última geração.</p>
+        </div>
+
+        <div class="media-grid">
+            <div class="media-card item-video">
+                <div class="video-placeholder">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Tecnologia no Campo" allowfullscreen></iframe>
+                </div>
+                <div class="media-info">
+                    <span><i class="fa-solid fa-video"></i> Vídeo Educativo</span>
+                    <h3>O papel da tecnologia no manejo sustentável</h3>
+                </div>
             </div>
 
-            <div class="stat">
-                <h2 class="counter" data-target="100">0</h2>
-                <span>Projetos Sustentáveis</span>
+            <div class="media-card">
+                <img src="https://images.unsplash.com/photo-1592982537447-744077110b90?auto=format&fit=crop&w=600&q=80" alt="Monitoramento por Drone">
+                <div class="media-info">
+                    <span><i class="fa-solid fa-camera"></i> Drone de Precisão</span>
+                    <h3>Otimização de insumos por geolocalização.</h3>
+                </div>
             </div>
 
+            <div class="media-card">
+                <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=600&q=80" alt="Energia Limpa no Agro">
+                <div class="media-info">
+                    <span><i class="fa-solid fa-camera"></i> Energia Solar</span>
+                    <h3>Matrizes energéticas limpas alimentando a irrigação.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="game" class="section-container bg-light">
+        <div class="section-header">
+            <h2>Espaço Gamer: Desafio Agrinho</h2>
+            <p>Teste seus conhecimentos sobre o equilíbrio do agro com a natureza e conquiste o selo de Produtor do Futuro!</p>
         </div>
 
-    </div>
+        <div class="quiz-container">
+            <div id="quiz-start-screen">
+                <i class="fa-solid fa-gamepad game-intro-icon"></i>
+                <h3>Você está pronto para o Desafio?</h3>
+                <p>Responda a perguntas rápidas baseadas em dados reais de agricultura sustentável.</p>
+                <button id="btn-start-quiz" class="btn-cta">Iniciar Jogo</button>
+            </div>
 
-    <div class="scroll-indicator">
-        <span></span>
-    </div>
+            <div id="quiz-game-screen" class="hide">
+                <div class="quiz-progress-bar"><div id="progress-fill"></div></div>
+                <div class="quiz-header-info">
+                    <span id="question-number">Pergunta 1 de 3</span>
+                    <span id="quiz-score"><i class="fa-solid fa-star"></i> Pontos: 0</span>
+                </div>
+                <h3 id="question-text">Texto da Pergunta Aqui?</h3>
+                <div id="options-container" class="options-grid">
+                    </div>
+            </div>
 
-</section>
-
-<!-- INTRODUÇÃO -->
-<section id="introducao" class="section">
-
-    <div class="section-title">
-        <h2>Introdução</h2>
-        <p>
-            O futuro do planeta depende da união entre produção agrícola eficiente e preservação dos recursos naturais.
-        </p>
-    </div>
-
-    <div class="intro-grid">
-
-        <div class="glass-card reveal">
-            <i class="fa-solid fa-seedling"></i>
-            <h3>Produção</h3>
-            <p>Garantir alimentos para uma população crescente.</p>
+            <div id="quiz-result-screen" class="hide">
+                <i class="fa-solid fa-trophy trophy-icon"></i>
+                <h3>Resultado do Desafio!</h3>
+                <p id="result-text">Você acertou 0 de 3 perguntas.</p>
+                <p id="result-feedback" class="feedback-msg">Continue estudando para proteger nosso ecossistema!</p>
+                <button id="btn-restart-quiz" class="btn-cta">Jogar Novamente</button>
+            </div>
         </div>
+    </section>
 
-        <div class="glass-card reveal">
-            <i class="fa-solid fa-earth-americas"></i>
-            <h3>Sustentabilidade</h3>
-            <p>Conservar recursos naturais para futuras gerações.</p>
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>Concurso Agrinho 2026</h3>
+                <p>Projeto escolar focado no desenvolvimento da consciência ambiental e valorização da produção sustentável nacional.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Referências Bibliográficas</h4>
+                <ul>
+                    <li><a href="https://www.embrapa.br" target="_blank" rel="noopener"><i class="fa-solid fa-book"></i> EMBRAPA - Dados de Visão de Futuro</a></li>
+                    <li><a href="http://www.sistemafaep.org.br" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i> Sistema FAEP/SENAR - Regulamentos</a></li>
+                    <li><a href="#" target="_blank"><i class="fa-solid fa-file-invoice"></i> Código Florestal Brasileiro (Lei 12.651)</a></li>
+                </ul>
+            </div>
         </div>
-
-        <div class="glass-card reveal">
-            <i class="fa-solid fa-microchip"></i>
-            <h3>Tecnologia</h3>
-            <p>Inovar para produzir mais com menos impacto.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 - Desenvolvido para fins Educacionais - Concurso Agrinho. Todos os direitos reservados.</p>
         </div>
+    </footer>
 
-    </div>
-
-</section>
-
-<!-- AGRO BRASILEIRO -->
-<section class="section dark" id="agro">
-
-    <div class="section-title">
-        <h2>Agro Brasileiro</h2>
-    </div>
-
-    <div class="cards-grid">
-
-        <div class="premium-card reveal">
-            <i class="fa-solid fa-wheat-awn"></i>
-            <h3>Produção</h3>
-            <p>O Brasil é um dos maiores produtores agrícolas do mundo.</p>
-        </div>
-
-        <div class="premium-card reveal">
-            <i class="fa-solid fa-ship"></i>
-            <h3>Exportação</h3>
-            <p>Exportação para centenas de países.</p>
-        </div>
-
-        <div class="premium-card reveal">
-            <i class="fa-solid fa-robot"></i>
-            <h3>Tecnologia</h3>
-            <p>Agricultura de precisão e automação.</p>
-        </div>
-
-        <div class="premium-card reveal">
-            <i class="fa-solid fa-leaf"></i>
-            <h3>Sustentabilidade</h3>
-            <p>Práticas agrícolas mais conscientes.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- DESAFIOS -->
-<section class="section" id="desafios">
-
-    <div class="section-title">
-        <h2>Desafios Ambientais</h2>
-    </div>
-
-    <canvas id="challengeChart"></canvas>
-
-</section>
-
-<!-- SOLUÇÕES -->
-<section class="section dark" id="solucoes">
-
-    <div class="section-title">
-        <h2>Soluções Sustentáveis</h2>
-    </div>
-
-    <div class="solutions-grid">
-
-        <div class="solution-card">
-            <h3>🚁 Drones</h3>
-        </div>
-
-        <div class="solution-card">
-            <h3>🤖 Inteligência Artificial</h3>
-        </div>
-
-        <div class="solution-card">
-            <h3>📡 Sensores IoT</h3>
-        </div>
-
-        <div class="solution-card">
-            <h3>☀ Energia Solar</h3>
-        </div>
-
-        <div class="solution-card">
-            <h3>🌳 ILPF</h3>
-        </div>
-
-        <div class="solution-card">
-            <h3>🎯 Agricultura de Precisão</h3>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- TIMELINE -->
-<section class="section">
-
-    <div class="section-title">
-        <h2>Timeline do Agro</h2>
-    </div>
-
-    <div class="timeline">
-
-        <div class="timeline-item">
-            <h3>Passado</h3>
-            <p>Agricultura tradicional.</p>
-        </div>
-
-        <div class="timeline-item">
-            <h3>Presente</h3>
-            <p>Tecnologia e sustentabilidade.</p>
-        </div>
-
-        <div class="timeline-item">
-            <h3>Futuro</h3>
-            <p>IA, robôs e agricultura regenerativa.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- MAPA -->
-<section class="section dark">
-
-    <div class="section-title">
-        <h2>Mapa Sustentável do Brasil</h2>
-    </div>
-
-    <div class="map-grid">
-
-        <button class="region-btn" data-region="Norte">Norte</button>
-        <button class="region-btn" data-region="Nordeste">Nordeste</button>
-        <button class="region-btn" data-region="Centro-Oeste">Centro-Oeste</button>
-        <button class="region-btn" data-region="Sudeste">Sudeste</button>
-        <button class="region-btn" data-region="Sul">Sul</button>
-
-    </div>
-
-    <div id="regionInfo"></div>
-
-</section>
-
-<!-- QUIZ -->
-<section id="quiz" class="section">
-
-    <div class="section-title">
-        <h2>Quiz Sustentável</h2>
-    </div>
-
-    <div class="quiz-container">
-
-        <div id="progressBar">
-            <span></span>
-        </div>
-
-        <h3 id="question"></h3>
-
-        <div id="answers"></div>
-
-        <button id="nextQuestion">
-            Próxima Pergunta
-        </button>
-
-    </div>
-
-</section>
-
-<!-- SIMULADOR -->
-<section id="simulador" class="section dark">
-
-    <div class="section-title">
-        <h2>Simulador Sustentável</h2>
-    </div>
-
-    <div class="simulator">
-
-        <label>
-            Produção Agrícola
-            <input type="range"
-            id="prod"
-            min="0"
-            max="100"
-            value="50">
-        </label>
-
-        <label>
-            Uso de Tecnologia
-            <input type="range"
-            id="tec"
-            min="0"
-            max="100"
-            value="50">
-        </label>
-
-        <button id="simulate">
-            Calcular
-        </button>
-
-        <div id="simResult"></div>
-
-    </div>
-
-</section>
-
-<!-- GALERIA -->
-<section class="section">
-
-    <div class="section-title">
-        <h2>Galeria Premium</h2>
-    </div>
-
-    <div class="gallery">
-
-        <img src="https://picsum.photos/500/400?1">
-        <img src="https://picsum.photos/500/600?2">
-        <img src="https://picsum.photos/500/500?3">
-        <img src="https://picsum.photos/500/700?4">
-        <img src="https://picsum.photos/500/450?5">
-        <img src="https://picsum.photos/500/600?6">
-
-    </div>
-
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox">
-    <img src="">
-</div>
-
-<!-- TECNOLOGIAS -->
-<section class="section dark">
-
-    <div class="section-title">
-        <h2>Tecnologias do Futuro</h2>
-    </div>
-
-    <div class="future-grid">
-
-        <div class="future-card">IA no Campo</div>
-        <div class="future-card">Robôs Agrícolas</div>
-        <div class="future-card">Agricultura Vertical</div>
-        <div class="future-card">Bioinsumos</div>
-        <div class="future-card">Agricultura Regenerativa</div>
-
-    </div>
-
-</section>
-
-<!-- CALCULADORA -->
-<section class="section">
-
-    <div class="section-title">
-        <h2>Calculadora Verde</h2>
-    </div>
-
-    <div class="calculator">
-
-        <input type="number"
-        id="area"
-        placeholder="Área cultivada">
-
-        <button id="calcGreen">
-            Calcular
-        </button>
-
-        <div id="greenResult"></div>
-
-    </div>
-
-</section>
-
-<!-- CERTIFICADO -->
-<section class="section dark">
-
-    <div class="section-title">
-        <h2>Compromisso Sustentável</h2>
-    </div>
-
-    <div class="certificate-area">
-
-        <input type="text"
-        id="userName"
-        placeholder="Digite seu nome">
-
-        <button id="generateCertificate">
-            Gerar Certificado
-        </button>
-
-        <div id="certificate"></div>
-
-    </div>
-
-</section>
-
-<!-- CONCLUSÃO -->
-<section class="section final-section">
-
-    <h2>
-        O futuro sustentável começa hoje.
-    </h2>
-
-    <p>
-        Produzir, preservar e inovar são os pilares do agro do futuro.
-    </p>
-
-    <a href="#inicio" class="btn-primary">
-        Voltar ao Topo
-    </a>
-
-</section>
-
-<footer>
-    <p>
-        Projeto Agrinho 2026 • Agro Forte e Futuro Sustentável
-    </p>
-</footer>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
