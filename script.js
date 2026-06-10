@@ -1,37 +1,34 @@
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. CONTADOR DINÂMICO PARA OS NÚMEROS DO AGRO
-    const rodarContador = (contador) => {
-        const alvo = +contador.getAttribute("data-target");
-        const valorAtual = +contador.innerText;
-        const velocidade = alvo / 35; 
-
-        if (valorAtual < alvo) {
-            contador.innerText = Math.ceil(valorAtual + velocidade);
-            setTimeout(() => rodarContador(contador), 30);
-        } else {
-            contador.innerText = alvo;
-        }
-    };
-
-    // 2. DETECTOR DE ROLAGEM (REVELAR SEÇÕES E EXECUTAR NÚMEROS)
-    const secoesParaAnimar = document.querySelectorAll(".animar");
-    const numerosParaContar = document.querySelectorAll(".num");
-    let disparouContagem = false;
-
-    const observadorVisual = new IntersectionObserver((entradas) => {
-        entradas.forEach(entrada => {
-            if (entrada.isIntersecting) {
-                entrada.target.classList.add("visivel");
-
-                // Dispara os números apenas se atingir a seção de dados
-                if (entrada.target.id === "dados" && !disparouContagem) {
-                    numerosParaContar.forEach(num => rodarContador(num));
-                    disparouContagem = true;
-                }
-            }
-        });
-    }, { threshold: 0.15 });
-
-    secoesParaAnimar.forEach(secao => observadorVisual.observe(secao));
+// GRÁFICOS COM CHART.JS
+const ctx1 = document.getElementById('graficoProducao').getContext('2d');
+const graficoProducao = new Chart(ctx1, {
+  type: 'bar',
+  data: {
+    labels: ['Soja', 'Milho', 'Trigo', 'Cana'],
+    datasets: [{
+      label: 'Produção (Toneladas)',
+      data: [1200, 900, 700, 1500],
+      backgroundColor: ['#66BB6A','#1B5E20','#42A5F5','#1565C0']
+    }]
+  }
 });
+
+const ctx2 = document.getElementById('graficoAgua').getContext('2d');
+const graficoAgua = new Chart(ctx2, {
+  type: 'line',
+  data: {
+    labels: ['2017','2018','2019','2020','2021','2022'],
+    datasets: [{
+      label: 'Consumo de Água (m³)',
+      data: [500, 480, 460, 430, 410, 390],
+      borderColor: '#1565C0',
+      fill: false,
+      tension: 0.4
+    }]
+  }
+});
+
+// QUIZ SIMPLES
+const quiz = [
+  {
+    pergunta: "O que é agricultura sustentável?",
+    opcoes: ["Uso intensivo de
