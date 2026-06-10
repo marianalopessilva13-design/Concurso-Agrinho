@@ -85,7 +85,7 @@ h2::after {
   z-index: -2;
 }
 
-/* Camada escura para dar contraste ao texto */
+/* Camada escura para dar contraste ao texto sobre o vídeo */
 #hero::before {
   content: '';
   position: absolute;
@@ -119,7 +119,7 @@ h2::after {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Botões */
+/* Botões da Hero */
 .buttons {
   display: flex;
   gap: 20px;
@@ -207,18 +207,23 @@ h2::after {
 }
 
 /* ==========================================
-   4. DESAFIOS (GRÁFICO)
+   4. DESAFIOS (SEÇÃO DO GRÁFICO ATUALIZADA)
    ========================================== */
 #desafios {
-  background-color: var(--TEXT-LIGHT);
+  background-color: #FFFFFF;
   border-radius: 16px;
   margin: 40px auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 60px 20px;
 }
 
-#chartDesafios {
-  max-width: 800px;
+/* Caixa controladora para impedir que o gráfico suma ou quebre */
+.chart-container {
+  position: relative;
   margin: 0 auto;
+  height: 380px; 
+  max-width: 800px;
+  width: 100%;
 }
 
 /* ==========================================
@@ -271,5 +276,9 @@ h2::after {
   
   section {
     padding: 60px 15px;
+  }
+  
+  .chart-container {
+    height: 280px; /* Reduz altura do gráfico em telas pequenas */
   }
 }
