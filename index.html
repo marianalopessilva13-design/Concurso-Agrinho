@@ -1,123 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agrinho 2026 - Agro Forte e Futuro Sustentável</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agrinho 2026 – Agro Forte e Futuro Sustentável</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Para gráficos -->
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">Agrinho <span>2026</span></div>
-        <nav>
-            <a href="#inicio">Início</a>
-            <a href="#contexto">O Equilíbrio</a>
-            <a href="#dados">Indicadores</a>
-            <a href="#pilares">Tecnologias</a>
-        </nav>
-    </header>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <video autoplay muted loop class="hero-video">
+      <source src="videos/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h1>AGRO FORTE E FUTURO SUSTENTÁVEL</h1>
+      <p>Produzir mais, preservar melhor e garantir qualidade de vida para as próximas gerações.</p>
+      <div class="hero-buttons">
+        <a href="#sobre" class="btn">Explorar Projeto</a>
+        <a href="#quiz" class="btn btn-secondary">Iniciar Jornada Sustentável</a>
+      </div>
+    </div>
+  </section>
 
-    <section id="inicio" class="hero-section">
-        <div class="overlay"></div>
-        <div class="hero-content">
-            <span class="tag">Concurso Agrinho 2026</span>
-            <h1>Agro Forte e Futuro Sustentável</h1>
-            <p>Conectando a alta produtividade do campo com a preservação ativa das nossas riquezas naturais.</p>
-            <div class="hero-buttons">
-                <a href="#contexto" class="btn-main">Explorar Projeto</a>
-                <a href="#pilares" class="btn-secondary">Ver Tecnologias</a>
-            </div>
-        </div>
-    </section>
+  <!-- SOBRE O AGRINHO -->
+  <section id="sobre" class="section">
+    <h2>Sobre o Agrinho</h2>
+    <p>História, objetivos educacionais, importância para escolas e comunidades, formação cidadã e desenvolvimento sustentável.</p>
+    <div class="timeline">
+      <div class="timeline-item">2010 - Início do Agrinho</div>
+      <div class="timeline-item">2015 - Expansão Nacional</div>
+      <div class="timeline-item">2020 - Inclusão de Conteúdos Sustentáveis</div>
+      <div class="timeline-item">2026 - Agro Forte e Futuro Sustentável</div>
+    </div>
+  </section>
 
-    <section id="contexto" class="section container row animar">
-        <div class="col text-block">
-            <span class="section-badge">Conceito Institucional</span>
-            <h2>Produzir sem esgotar:<br><span>A ciência do equilíbrio</span></h2>
-            <p>O conceito de <strong>Agro Forte</strong> no século XXI desmistifica a falsa rivalidade entre produção e conservação. Hoje, a ciência tropical permite que o produtor aumente sua colheita verticalmente, ou seja, produzindo mais na mesma área, sem a necessidade de abertura de novas terras.</p>
-            <p>A sustentabilidade deixou de ser apenas um discurso e transformou-se em métricas reais de manejo do solo, rotação de culturas e respeito absoluto às Áreas de Preservação Permanente (APPs).</p>
-        </div>
-        <div class="col img-block">
-            <div class="image-box">
-                <div class="image-tag">Preservação Ativa</div>
-            </div>
-        </div>
-    </section>
+  <!-- AGRO E SUSTENTABILIDADE -->
+  <section id="agro" class="section">
+    <h2>O Agro que Alimenta o Mundo</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Agricultura Familiar</h3>
+        <p>Produção de alimentos e desenvolvimento econômico sustentável.</p>
+      </div>
+      <div class="card">
+        <h3>Agricultura de Precisão</h3>
+        <p>Tecnologia aplicada ao campo para maior produtividade e preservação ambiental.</p>
+      </div>
+      <div class="card">
+        <h3>Sustentabilidade</h3>
+        <p>Práticas agrícolas que respeitam a natureza e reduzem impactos ambientais.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="dados" class="section bg-light animar">
-        <div class="container">
-            <div class="center-header">
-                <span class="section-badge">Dados e Métricas</span>
-                <h2 class="center">O Agro em Números</h2>
-                <p class="center sub">Indicadores que comprovam a eficiência da sustentabilidade no campo brasileiro.</p>
-            </div>
-            
-            <div class="grid-stats">
-                <div class="stat-card">
-                    <h3><span class="num" data-target="66">0</span>%</h3>
-                    <h4>Território Protegido</h4>
-                    <p>Percentual do território brasileiro destinado à preservação da vegetação nativa, liderado por produtores rurais.</p>
-                </div>
-                <div class="stat-card">
-                    <h3><span class="num" data-target="33">0</span>M</h3>
-                    <h4>Hectares Sustentáveis</h4>
-                    <p>Área de Sistemas de Integração (ILPF) que combinam floresta, gado e lavoura na mesma propriedade.</p>
-                </div>
-                <div class="stat-card">
-                    <h3><span class="num" data-target="85">0</span>%</h3>
-                    <h4>Plantio Direto</h4>
-                    <p>Uso da palhada protetora que reduz drasticamente a erosão e mantém a umidade natural do solo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- GALERIA MULTIMÍDIA -->
+  <section id="galeria" class="section">
+    <h2>Galeria Multimídia</h2>
+    <div class="gallery">
+      <img src="images/fazenda1.jpg" alt="Fazenda Sustentável">
+      <img src="images/fazenda2.jpg" alt="Agricultura Familiar">
+      <img src="images/fazenda3.jpg" alt="Agrofloresta">
+    </div>
+  </section>
 
-    <section id="pilares" class="section container animar">
-        <div class="center-header">
-            <span class="section-badge">Pilares Práticos</span>
-            <h2 class="center">Práticas do Futuro Sustentável</h2>
-            <p class="center sub">Como a tecnologia atua diretamente para garantir o equilíbrio ambiental.</p>
-        </div>
-        <div class="grid-cards">
-            <div class="card">
-                <div class="card-icon">🌱</div>
-                <h3>Bioinsumos</h3>
-                <p>Uso de defensores biológicos e microrganismos naturais para nutrir e proteger as plantas. Essa prática reduz a dependência de insumos químicos sintéticos e protege a fauna local do solo.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">📡</div>
-                <h3>Telemetria e Drones</h3>
-                <p>Mapeamento de precisão que monitora a saúde da lavoura planta por planta. Permite a aplicação localizada de água e nutrientes apenas onde é necessário, evitando desperdício de recursos naturais.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">💧</div>
-                <h3>Manejo Hídrico</h3>
-                <p>Sistemas de irrigação inteligente integrados a sensores meteorológicos. Fornecem a quantidade exata de água necessária para a planta, combatendo o desperdício e protegendo os mananciais.</p>
-            </div>
-        </div>
-    </section>
+  <!-- GRÁFICOS INTERATIVOS -->
+  <section id="graficos" class="section">
+    <h2>Centro de Dados</h2>
+    <canvas id="graficoProducao"></canvas>
+    <canvas id="graficoAgua"></canvas>
+  </section>
 
-    <footer>
-        <div class="container footer-grid">
-            <div class="footer-info">
-                <h3>Agrinho 2026</h3>
-                <p>Projeto escolar voltado à conscientização, sustentabilidade e inovação no campo.</p>
-                <small class="fontes">Fontes dos dados: EMBRAPA / Cadastro Ambiental Rural (CAR)</small>
-            </div>
-            <div class="footer-theme">
-                <h4>Tema Oficial:</h4>
-                <p>"Agro forte e futuro sustentável: equilíbrio entre produção e meio ambiente"</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Concurso Agrinho. Desenvolvido para avaliação da Banca Examinadora.</p>
-        </div>
-    </footer>
+  <!-- QUIZ INTERATIVO -->
+  <section id="quiz" class="section">
+    <h2>Quiz Interativo</h2>
+    <div class="quiz-container">
+      <p id="pergunta"></p>
+      <div id="opcoes"></div>
+      <button id="proxima" class="btn">Próxima</button>
+      <p id="resultado"></p>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- RODAPÉ -->
+  <footer>
+    <p>Um agro forte nasce do respeito à natureza. O futuro sustentável depende das escolhas que fazemos hoje.</p>
+    <p>&copy; Concurso Agrinho 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
