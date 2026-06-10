@@ -1,12 +1,20 @@
+// Menu mobile
+const menuToggle = document.getElementById("menuToggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+});
+
+
 // Animação ao rolar
 const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
   reveals.forEach((item) => {
-    const windowHeight = window.innerHeight;
     const itemTop = item.getBoundingClientRect().top;
 
-    if (itemTop < windowHeight - 100) {
+    if (itemTop < window.innerHeight - 100) {
       item.classList.add("active");
     }
   });
@@ -16,57 +24,62 @@ window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
 
-// Contadores animados
+// Contadores
 const counters = document.querySelectorAll(".counter");
 let countersStarted = false;
 
-function startCounters() {
+function animateCounters() {
   if (countersStarted) return;
 
-  const statsSection = document.querySelector(".stats");
-  const top = statsSection.getBoundingClientRect().top;
+  const dataSection = document.getElementById("dados");
+  const top = dataSection.getBoundingClientRect().top;
 
-  if (top < window.innerHeight - 100) {
+  if (top < window.innerHeight - 120) {
     countersStarted = true;
 
     counters.forEach((counter) => {
-      const target = Number(counter.getAttribute("data-target"));
+      const target = parseFloat(counter.dataset.target);
       let current = 0;
-      const increment = target / 80;
+      const increment = target / 90;
 
-      const updateCounter = () => {
+      function update() {
         current += increment;
 
         if (current < target) {
-          counter.textContent = Math.ceil(current);
-          requestAnimationFrame(updateCounter);
+          counter.textContent = target % 1 === 0
+            ? Math.ceil(current)
+            : current.toFixed(1);
+          requestAnimationFrame(update);
         } else {
           counter.textContent = target;
         }
-      };
+      }
 
-      updateCounter();
+      update();
     });
   }
 }
 
-window.addEventListener("scroll", startCounters);
+window.addEventListener("scroll", animateCounters);
 
 
-// Gráficos
-const ctx1 = document.getElementById("chartSustentavel");
-const ctx2 = document.getElementById("chartTecnologia");
+// Gráfico 1 — Plano ABC+
+const abcChart = document.getElementById("abcChart");
 
-new Chart(ctx1, {
-  type: "line",
+new Chart(abcChart, {
+  type: "bar",
   data: {
-    labels: ["2021", "2022", "2023", "2024", "2025", "2026"],
+    labels: [
+      "Recuperação de pastagens",
+      "ILPF e SAFs",
+      "Plantio direto",
+      "Florestas plantadas",
+      "Bioinsumos"
+    ],
     datasets: [{
-      label: "Produção sustentável — dado ilustrativo",
-      data: [28, 35, 43, 52, 64, 78],
-      borderWidth: 4,
-      tension: 0.4,
-      fill: true
+      label: "Metas do Plano ABC+ até 2030 em milhões de hectares/casos",
+      data: [30, 10.1, 12.5, 4, 13],
+      borderWidth: 2
     }]
   },
   options: {
@@ -75,59 +88,132 @@ new Chart(ctx1, {
     plugins: {
       legend: {
         labels: {
-          font: { size: 13 }
+          font: {
+            size: 13,
+            weight: "bold"
+          }
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return context.dataset.label + ": " + context.raw;
+          }
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
+// Gráfico 2 — Uso do território brasileiro
+const areaChart = document.getElementById("areaChart");
+
+new Chart(areaChart, {
+  type: "doughnut",
+  data: {
+    labels: [
+      "Áreas protegidas",
+      "Vegetação nativa em imóveis rurais",
+      "Demais usos do território"
+    ],
+    datasets: [{
+      label: "Uso do território brasileiro",
+      data: [24.2, 25.6, 50.2],
+      borderWidth: 3
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: {
+          font: {
+            size: 13,
+            weight: "bold"
+          }
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return context.label + ": " + context.raw + "%";
+          }
         }
       }
     }
   }
 });
 
-new Chart(ctx2, {
-  type: "bar",
-  data: {
-    labels: ["Sensores", "Drones", "Bioinsumos", "IA", "Irrigação"],
-    datasets: [{
-      label: "Adoção de tecnologias — dado ilustrativo",
-      data: [62, 48, 55, 38, 70],
-      borderWidth: 2
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false
-  }
+
+// Accordion — Mitos e Verdades
+const accordionItems = document.querySelectorAll(".accordion-item");
+
+accordionItems.forEach((item) => {
+  const button = item.querySelector("button");
+
+  button.addEventListener("click", () => {
+    item.classList.toggle("active");
+  });
 });
 
 
 // Quiz
 const questions = [
   {
-    question: "Qual prática ajuda a proteger o solo contra erosão?",
-    answers: ["Plantio direto", "Queimada frequente", "Desmatamento", "Uso excessivo de água"],
-    correct: 0
-  },
-  {
-    question: "O que é agricultura de precisão?",
+    question: "Qual prática ajuda a reduzir erosão e conservar a umidade do solo?",
     answers: [
-      "Produzir sem planejamento",
-      "Usar dados e tecnologia para manejar melhor a lavoura",
-      "Plantar sempre a mesma cultura",
-      "Aumentar desperdícios"
+      "Plantio direto",
+      "Queimada frequente",
+      "Uso descontrolado de água",
+      "Retirada total da cobertura vegetal"
     ],
-    correct: 1
-  },
-  {
-    question: "Qual tecnologia pode monitorar áreas agrícolas pelo ar?",
-    answers: ["Drones", "Forno elétrico", "Trator antigo", "Lâmpada comum"],
     correct: 0
   },
   {
-    question: "Bioinsumos ajudam principalmente em quê?",
+    question: "O que significa ILPF?",
     answers: [
-      "No manejo biológico e sustentável",
-      "No aumento de poluição",
-      "Na destruição do solo",
-      "Na redução da biodiversidade"
+      "Integração Lavoura-Pecuária-Floresta",
+      "Índice Local de Produção Familiar",
+      "Instituto Livre de Pesquisa Florestal",
+      "Insumo Legal para Plantio Fértil"
+    ],
+    correct: 0
+  },
+  {
+    question: "Como a agricultura de precisão ajuda o produtor?",
+    answers: [
+      "Aplicando insumos de forma mais inteligente e localizada",
+      "Aumentando desperdício",
+      "Eliminando a necessidade de planejamento",
+      "Substituindo totalmente o produtor"
+    ],
+    correct: 0
+  },
+  {
+    question: "Qual destes recursos pode ajudar no monitoramento de lavouras?",
+    answers: [
+      "Drones e sensores",
+      "Apenas observação manual",
+      "Queimadas",
+      "Descarte de dados"
+    ],
+    correct: 0
+  },
+  {
+    question: "Por que a rastreabilidade é importante no agro moderno?",
+    answers: [
+      "Porque mostra origem, qualidade e responsabilidade da produção",
+      "Porque esconde informações do consumidor",
+      "Porque reduz a transparência",
+      "Porque impede a venda da produção"
     ],
     correct: 0
   }
@@ -141,19 +227,25 @@ const questionEl = document.getElementById("question");
 const answersEl = document.getElementById("answers");
 const nextBtn = document.getElementById("nextBtn");
 const resultEl = document.getElementById("result");
+const quizStep = document.getElementById("quizStep");
+const quizScore = document.getElementById("quizScore");
 
 function loadQuestion() {
   answered = false;
-  resultEl.textContent = "";
+  resultEl.innerHTML = "";
   nextBtn.style.display = "none";
 
-  const q = questions[currentQuestion];
-  questionEl.textContent = q.question;
+  const current = questions[currentQuestion];
+
+  quizStep.textContent = `Pergunta ${currentQuestion + 1} de ${questions.length}`;
+  quizScore.textContent = `Pontuação: ${score}`;
+
+  questionEl.textContent = current.question;
   answersEl.innerHTML = "";
 
-  q.answers.forEach((answer, index) => {
+  current.answers.forEach((answer, index) => {
     const button = document.createElement("button");
-    button.classList.add("answer-btn");
+    button.className = "answer-btn";
     button.textContent = answer;
 
     button.addEventListener("click", () => selectAnswer(button, index));
@@ -173,13 +265,14 @@ function selectAnswer(button, index) {
   if (index === correctIndex) {
     button.classList.add("correct");
     score++;
-    resultEl.textContent = "Resposta correta! Mandou bem no agro inteligente.";
+    resultEl.innerHTML = "✅ Resposta correta! Esse é o agro inteligente em ação.";
   } else {
     button.classList.add("wrong");
     allButtons[correctIndex].classList.add("correct");
-    resultEl.textContent = "Quase! A resposta correta foi destacada.";
+    resultEl.innerHTML = "❌ Quase! A resposta correta foi destacada.";
   }
 
+  quizScore.textContent = `Pontuação: ${score}`;
   nextBtn.style.display = "inline-block";
 }
 
@@ -197,33 +290,23 @@ function showFinalResult() {
   questionEl.textContent = "Resultado final";
   answersEl.innerHTML = "";
   nextBtn.style.display = "none";
+  quizStep.textContent = "Quiz concluído";
+  quizScore.textContent = `Pontuação final: ${score}/${questions.length}`;
 
-  let feedback = "";
+  let feedback;
 
   if (score === questions.length) {
-    feedback = "Excelente! Você entende bem o equilíbrio entre produção e sustentabilidade.";
-  } else if (score >= 2) {
-    feedback = "Muito bom! Você já tem uma boa visão sobre o agro sustentável.";
+    feedback = "Excelente! Você tem uma visão muito forte sobre sustentabilidade, tecnologia e produção rural.";
+  } else if (score >= 3) {
+    feedback = "Muito bom! Você já entende bem os principais caminhos do agro sustentável.";
   } else {
-    feedback = "Bom começo! Continue explorando o tema para fortalecer seus conhecimentos.";
+    feedback = "Bom começo! O agro sustentável é um universo enorme — e você já deu o primeiro passo.";
   }
 
   resultEl.innerHTML = `
-    Você acertou <strong>${score}</strong> de <strong>${questions.length}</strong> perguntas.<br>
+    <strong>Você acertou ${score} de ${questions.length} perguntas.</strong><br><br>
     ${feedback}
   `;
 }
 
 loadQuestion();
-
-
-// Mitos e verdades
-const accordionItems = document.querySelectorAll(".accordion-item");
-
-accordionItems.forEach((item) => {
-  const button = item.querySelector("button");
-
-  button.addEventListener("click", () => {
-    item.classList.toggle("active");
-  });
-});
