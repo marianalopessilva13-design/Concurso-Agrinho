@@ -1,30 +1,140 @@
-/* Configuração e variáveis de estilo do projeto */
-:root {
-    --agro-verde: #1b4332;
-    --agro-azul: #1d3557;
-    --agro-marrom: #6c584c;
-    --agro-fundo: #f8f9fa;
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
-/* Efeito de Vidro Desfocado (Glassmorphism) para a Barra de Menu */
-.glass {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+body {
+  line-height: 1.6;
+  color: #333;
 }
 
-/* Classes utilitárias customizadas de cores */
-.text-agroVerde { color: var(--agro-verde); }
-.text-agroAzul { color: var(--agro-azul); }
-.bg-agroVerde { background-color: var(--agro-verde); }
-.bg-agroFundo { background-color: var(--agro-fundo); }
-
-/* Ajustes finos de tipografia */
-h1, h2, h3, .font-serif {
-    font-family: 'Merriweather', serif;
+/* HERO */
+#hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
 }
 
-body, .font-sans {
-    font-family: 'Inter', sans-serif;
+#hero video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.buttons .btn, .buttons .btn-outline {
+  padding: 10px 20px;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #2E7D32;
+  color: #fff;
+}
+
+.btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+  background: transparent;
+}
+
+/* SEÇÕES */
+section {
+  padding: 80px 20px;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #1565C0;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* CARDS */
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #F5F5DC;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* GALERIA */
+.gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+/* QUIZ */
+#quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#answers button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  width: 80%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#answers button:hover {
+  background-color: #81C784;
+  color: #fff;
+}
+
+/* RODAPÉ */
+footer {
+  background-color: #2E7D32;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
 }
