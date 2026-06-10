@@ -1,140 +1,275 @@
-/* Reset básico */
+/* ==========================================
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS
+   ========================================== */
+:root {
+  --PRIMARY-COLOR: #2E7D32;       /* Verde Agro */
+  --PRIMARY-LIGHT: #4CAF50;       /* Verde Claro */
+  --ACCENT-COLOR: #FFB300;        /* Ouro/Sol (Destaque) */
+  --TEXT-DARK: #212121;           /* Texto Principal */
+  --TEXT-LIGHT: #FFFFFF;          /* Texto Claro */
+  --BG-LIGHT: #F5F5F5;            /* Fundo Claro */
+  --BG-CARD: #FFFFFF;             /* Fundo do Card */
+  --FONT-MAIN: 'Inter', sans-serif;
+  --FONT-TITLE: 'Montserrat', sans-serif;
+  --FONT-ALT: 'Poppins', sans-serif;
+  --TRANSITION: all 0.3s ease;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--FONT-MAIN);
+  color: var(--TEXT-DARK);
+  background-color: var(--BG-LIGHT);
 }
 
 body {
   line-height: 1.6;
-  color: #333;
 }
 
-/* HERO */
-#hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
-}
-
-#hero video {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.hero-content h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-.buttons .btn, .buttons .btn-outline {
-  padding: 10px 20px;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: 5px;
-}
-
-.btn {
-  background-color: #2E7D32;
-  color: #fff;
-}
-
-.btn-outline {
-  border: 2px solid #fff;
-  color: #fff;
-  background: transparent;
-}
-
-/* SEÇÕES */
 section {
   padding: 80px 20px;
-}
-
-h2 {
-  font-family: 'Montserrat', sans-serif;
-  color: #1565C0;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-/* CARDS */
-.cards {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: #F5F5DC;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  width: 250px;
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-/* GALERIA */
-.gallery {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.gallery img {
-  width: 300px;
-  border-radius: 10px;
-}
-
-/* QUIZ */
-#quiz-container {
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
 
-#answers button {
+h2 {
+  font-family: var(--FONT-TITLE);
+  font-size: 2.5rem;
+  color: var(--PRIMARY-COLOR);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Linha decorativa abaixo dos títulos */
+h2::after {
+  content: '';
   display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  width: 80%;
-  border: none;
-  border-radius: 5px;
+  width: 60px;
+  height: 4px;
+  background-color: var(--ACCENT-COLOR);
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+
+/* ==========================================
+   2. HERO SECTION (COM VÍDEO DE FUNDO)
+   ========================================== */
+#hero {
+  position: relative;
+  height: 100vh;
+  max-width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Camada escura para dar contraste ao texto */
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(46,125,50,0.4) 100%);
+  z-index: -1;
+}
+
+.hero-content {
+  color: var(--TEXT-LIGHT);
+  max-width: 800px;
+  padding: 20px;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero-content h1 {
+  font-family: var(--FONT-TITLE);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Botões */
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn, .btn-outline {
+  display: inline-block;
+  padding: 15px 35px;
+  font-family: var(--FONT-ALT);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: var(--TRANSITION);
   cursor: pointer;
 }
 
-#answers button:hover {
-  background-color: #81C784;
-  color: #fff;
+.btn {
+  background-color: var(--PRIMARY-COLOR);
+  color: var(--TEXT-LIGHT);
+  border: 2px solid var(--PRIMARY-COLOR);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
 }
 
-/* RODAPÉ */
-footer {
-  background-color: #2E7D32;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
+.btn:hover {
+  background-color: var(--PRIMARY-LIGHT);
+  border-color: var(--PRIMARY-LIGHT);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--TEXT-LIGHT);
+  border: 2px solid var(--TEXT-LIGHT);
+}
+
+.btn-outline:hover {
+  background-color: var(--TEXT-LIGHT);
+  color: var(--PRIMARY-COLOR);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================
+   3. SOBRE O AGRO (CARDS)
+   ========================================== */
+#sobre {
+  background-color: var(--BG-LIGHT);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  background-color: var(--BG-CARD);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: var(--TRANSITION);
+  border-top: 4px solid var(--PRIMARY-COLOR);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+}
+
+.card h3 {
+  font-family: var(--FONT-ALT);
+  font-size: 1.4rem;
+  color: var(--PRIMARY-COLOR);
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* ==========================================
+   4. DESAFIOS (GRÁFICO)
+   ========================================== */
+#desafios {
+  background-color: var(--TEXT-LIGHT);
+  border-radius: 16px;
+  margin: 40px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+#chartDesafios {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ==========================================
+   5. TECNOLOGIA (GALERIA/IMAGEM)
+   ========================================== */
+#tecnologia {
+  background-color: var(--BG-LIGHT);
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.gallery img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: var(--TRANSITION);
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+}
+
+/* ==========================================
+   6. ANIMAÇÕES E RESPONSIVIDADE
+   ========================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.3rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  
+  section {
+    padding: 60px 15px;
+  }
 }
