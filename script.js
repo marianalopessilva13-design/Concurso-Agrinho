@@ -74,51 +74,46 @@ const perguntas = [
     {
         pergunta: "Qual prática agrícola ajuda a preservar o solo?",
         respostas: [
-            "Plantio direto",
-            "Desmatamento",
-            "Uso excessivo de água"
-        ],
-        correta: 0
+            { texto: "Plantio direto", correta: true },
+            { texto: "Desmatamento", correta: false },
+            { texto: "Uso excessivo de água", correta: false }
+        ]
     },
 
     {
         pergunta: "Qual tecnologia auxilia no monitoramento das plantações?",
         respostas: [
-            "Drones e sensores",
-            "Queimadas",
-            "Retirada de matas"
-        ],
-        correta: 0
+            { texto: "Queimadas", correta: false },
+            { texto: "Drones e sensores", correta: true },
+            { texto: "Retirada de matas", correta: false }
+        ]
     },
 
     {
         pergunta: "O que significa produzir de forma sustentável?",
         respostas: [
-            "Equilibrar produção e preservação",
-            "Produzir sem planejamento",
-            "Utilizar todos os recursos naturais rapidamente"
-        ],
-        correta: 0
+            { texto: "Produzir sem planejamento", correta: false },
+            { texto: "Utilizar todos os recursos naturais rapidamente", correta: false },
+            { texto: "Equilibrar produção e preservação", correta: true }
+        ]
     },
 
     {
         pergunta: "Qual fonte de energia combina com um agro mais sustentável?",
         respostas: [
-            "Energia solar",
-            "Maior desperdício energético",
-            "Menos tecnologia"
-        ],
-        correta: 0
+            { texto: "Maior desperdício energético", correta: false },
+            { texto: "Energia solar", correta: true },
+            { texto: "Menos tecnologia", correta: false }
+        ]
     },
 
     {
         pergunta: "Qual prática integra lavoura, pecuária e floresta?",
         respostas: [
-            "ILPF",
-            "Queimada descontrolada",
-            "Monocultura sem manejo"
-        ],
-        correta: 0
+            { texto: "Monocultura sem manejo", correta: false },
+            { texto: "Queimada descontrolada", correta: false },
+            { texto: "ILPF", correta: true }
+        ]
     }
 ];
 
@@ -130,6 +125,10 @@ const perguntaTexto = document.getElementById("question");
 const respostasBox = document.getElementById("answers");
 const resultado = document.getElementById("result");
 const progresso = document.getElementById("progress");
+
+function embaralhar(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
 
 function carregarPergunta() {
     if (perguntaAtual >= perguntas.length) {
@@ -156,43 +155,42 @@ function carregarPergunta() {
     }
 
     let item = perguntas[perguntaAtual];
+    let respostasEmbaralhadas = embaralhar([...item.respostas]);
 
     progresso.innerHTML = `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
     perguntaTexto.innerHTML = item.pergunta;
     respostasBox.innerHTML = "";
     resultado.innerHTML = "";
 
-    item.respostas.forEach((resposta, index) => {
+    respostasEmbaralhadas.forEach((resposta) => {
         let botao = document.createElement("button");
 
         botao.className = "option";
-        botao.innerHTML = resposta;
+        botao.innerHTML = resposta.texto;
 
         botao.onclick = () => {
-            verificarResposta(index, botao);
+            verificarResposta(resposta.correta, botao);
         };
 
         respostasBox.appendChild(botao);
     });
 }
 
-function verificarResposta(index, botaoClicado) {
-    const respostaCorreta = perguntas[perguntaAtual].correta;
+function verificarResposta(correta, botaoClicado) {
     const botoes = document.querySelectorAll(".option");
 
     botoes.forEach(botao => {
         botao.disabled = true;
     });
 
-    if (index === respostaCorreta) {
+    if (correta) {
         pontos++;
         botaoClicado.classList.add("correct");
         resultado.innerHTML = "✅ Resposta correta!";
     } else {
         erros++;
         botaoClicado.classList.add("wrong");
-        botoes[respostaCorreta].classList.add("correct");
-        resultado.innerHTML = "❌ Resposta incorreta. A alternativa correta foi destacada.";
+        resultado.innerHTML = "❌ Resposta incorreta.";
     }
 
     setTimeout(() => {
