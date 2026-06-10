@@ -1,161 +1,30 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Configuração e variáveis de estilo do projeto */
+:root {
+    --agro-verde: #1b4332;
+    --agro-azul: #1d3557;
+    --agro-marrom: #6c584c;
+    --agro-fundo: #f8f9fa;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #F5F5DC;
-  color: #1B5E20;
+/* Efeito de Vidro Desfocado (Glassmorphism) para a Barra de Menu */
+.glass {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* HERO */
-.hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  overflow: hidden;
+/* Classes utilitárias customizadas de cores */
+.text-agroVerde { color: var(--agro-verde); }
+.text-agroAzul { color: var(--agro-azul); }
+.bg-agroVerde { background-color: var(--agro-verde); }
+.bg-agroFundo { background-color: var(--agro-fundo); }
+
+/* Ajustes finos de tipografia */
+h1, h2, h3, .font-serif {
+    font-family: 'Merriweather', serif;
 }
 
-.hero-video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
+body, .font-sans {
+    font-family: 'Inter', sans-serif;
 }
-
-.overlay {
-  position: absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.4);
-  z-index: -1;
-}
-
-.hero-content h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-}
-
-.hero-buttons .btn {
-  margin: 0.5rem;
-}
-
-/* SECTIONS */
-.section {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.full-height {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* CARDS */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.card {
-  width: 300px;
-  border-radius: 15px;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  overflow: hidden;
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* GALERIA */
-.gallery {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.gallery-item img {
-  width: 300px;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.gallery-item img:hover {
-  transform: scale(1.05);
-}
-
-/* QUIZ */
-.quiz-container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-.quiz-container button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #66BB6A;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.quiz-container button:hover {
-  background-color: #1B5E20;
-}
-
-/* RODAPÉ */
-footer {
-  background-color: #1B5E20;
-  color: #fff;
-  padding: 40px 20px;
-  text-align: center;
-  font-size: 1rem;
-}
-
-/* BOTÕES */
-.btn {
-  padding: 12px 24px;
-  border-radius: 10px;
-  background-color: #66BB6A;
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.btn:hover {
- 
