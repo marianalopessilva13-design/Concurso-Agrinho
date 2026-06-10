@@ -8,7 +8,6 @@ function animarContadores() {
     counters.forEach(counter => {
         let valorFinal = Number(counter.dataset.value);
         let valorAtual = 0;
-        let velocidade = 25;
 
         let contador = setInterval(() => {
             valorAtual++;
@@ -17,7 +16,7 @@ function animarContadores() {
             if (valorAtual >= valorFinal) {
                 clearInterval(contador);
             }
-        }, velocidade);
+        }, 25);
     });
 }
 
@@ -37,7 +36,7 @@ new Chart(ctx, {
         labels: ["2022", "2023", "2024", "2025", "2026"],
 
         datasets: [{
-            label: "Evolução de práticas sustentáveis no agro (%)",
+            label: "Avanço estimado de práticas sustentáveis no agro (%)",
             data: [25, 38, 50, 67, 82],
             borderWidth: 4,
             tension: .4,
@@ -67,7 +66,7 @@ new Chart(ctx, {
 
 
 // ================================
-// QUIZ INTERATIVO
+// QUIZ INTERATIVO COM RESPOSTAS EMBARALHADAS
 // ================================
 
 const perguntas = [
@@ -162,7 +161,7 @@ function carregarPergunta() {
     respostasBox.innerHTML = "";
     resultado.innerHTML = "";
 
-    respostasEmbaralhadas.forEach((resposta) => {
+    respostasEmbaralhadas.forEach(resposta => {
         let botao = document.createElement("button");
 
         botao.className = "option";
@@ -255,3 +254,17 @@ elementos.forEach(elemento => {
 window.addEventListener("scroll", animarScroll);
 
 animarScroll();
+
+
+// ================================
+// MENU MOBILE
+// ================================
+
+const menuMobile = document.getElementById("menuMobile");
+const menu = document.querySelector(".menu");
+
+if (menuMobile) {
+    menuMobile.addEventListener("click", () => {
+        menu.classList.toggle("active");
+    });
+}
