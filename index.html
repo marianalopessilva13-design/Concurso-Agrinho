@@ -3,24 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Agro Forte e Futuro Sustentável</title>
 
   <link rel="stylesheet" href="style.css" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-  <header class="header">
+  <header class="topbar">
     <nav class="navbar">
-      <div class="logo">Agro<span>Futuro</span></div>
+      <a href="#inicio" class="logo">
+        Agro<span>Futuro</span>
+      </a>
 
-      <ul class="menu">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+
+      <ul class="menu" id="menu">
         <li><a href="#inicio">Início</a></li>
-        <li><a href="#sobre">Tema</a></li>
+        <li><a href="#proposito">Propósito</a></li>
+        <li><a href="#dados">Dados reais</a></li>
+        <li><a href="#graficos">Gráficos</a></li>
         <li><a href="#praticas">Práticas</a></li>
+        <li><a href="#curiosidades">Curiosidades</a></li>
+        <li><a href="#mitos">Mitos</a></li>
         <li><a href="#quiz">Quiz</a></li>
         <li><a href="#futuro">Futuro</a></li>
       </ul>
@@ -28,234 +37,349 @@
   </header>
 
   <main>
+    <!-- HERO -->
     <section id="inicio" class="hero">
-      <div class="hero-content">
-        <span class="tag">Produção + Preservação</span>
-        <h1>Agro Forte e Futuro Sustentável</h1>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content reveal">
+        <span class="eyebrow">Agro moderno • Produção • Meio ambiente</span>
+
+        <h1>
+          Agro Forte e Futuro Sustentável
+        </h1>
+
         <p>
-          O equilíbrio entre produtividade, inovação e respeito ao meio ambiente
-          é o caminho para um campo mais forte, inteligente e preparado para o futuro.
+          Um site para mostrar que produtividade, tecnologia e preservação ambiental
+          não são caminhos opostos. O futuro do campo será construído por quem produz
+          mais, desperdiça menos e protege melhor.
         </p>
 
-        <div class="buttons">
-          <a href="#sobre" class="btn primary">Explorar conteúdo</a>
-          <a href="#quiz" class="btn secondary">Fazer quiz</a>
+        <div class="hero-actions">
+          <a href="#dados" class="btn primary">Ver dados reais</a>
+          <a href="#quiz" class="btn secondary">Testar conhecimento</a>
         </div>
       </div>
 
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Campo sustentável">
-      </div>
-    </section>
-
-    <section id="sobre" class="section">
-      <div class="section-title">
-        <span>Sobre o tema</span>
-        <h2>Produzir mais sem destruir o amanhã</h2>
-      </div>
-
-      <div class="text-box reveal">
+      <div class="hero-card reveal">
+        <h3>Mensagem central</h3>
         <p>
-          O agronegócio moderno não precisa escolher entre produção e preservação.
-          Pelo contrário: a sustentabilidade se tornou uma aliada estratégica para
-          aumentar produtividade, reduzir desperdícios, proteger o solo, preservar a água
-          e fortalecer a imagem do produtor.
-        </p>
-
-        <p>
-          Tecnologias como sensores, drones, irrigação inteligente, bioinsumos,
-          agricultura de precisão e integração lavoura-pecuária-floresta mostram que
-          é possível produzir com eficiência, responsabilidade e visão de longo prazo.
+          Sustentabilidade no agro não é discurso bonito: é estratégia produtiva,
+          econômica e ambiental.
         </p>
       </div>
     </section>
 
-    <section class="section stats">
-      <div class="section-title">
-        <span>Indicadores</span>
-        <h2>Números que mostram o impacto</h2>
-        <p>Dados ilustrativos para fins educativos.</p>
+    <!-- PROPÓSITO -->
+    <section id="proposito" class="section split-section">
+      <div class="split-text reveal">
+        <span class="section-tag">O novo agro</span>
+        <h2>Produzir bem é também cuidar do solo, da água e do futuro.</h2>
+
+        <p>
+          O produtor rural moderno precisa lidar com clima, mercado, custos,
+          produtividade, solo, tecnologia, legislação ambiental e sucessão familiar.
+          Por isso, o agro sustentável não é apenas uma pauta ambiental: é uma pauta
+          de gestão.
+        </p>
+
+        <p>
+          O equilíbrio entre produção e meio ambiente nasce quando a propriedade rural
+          passa a ser vista como um sistema vivo: solo saudável, água bem utilizada,
+          áreas preservadas, tecnologia aplicada e decisões baseadas em dados.
+        </p>
       </div>
 
-      <div class="stats-grid">
-        <div class="stat-card reveal">
-          <h3 class="counter" data-target="35">0</h3>
-          <p>% de ganho em eficiência produtiva</p>
+      <div class="feature-panel reveal">
+        <div class="feature-item">
+          <strong>Mais produtividade</strong>
+          <span>Uso inteligente de recursos e manejo técnico.</span>
         </div>
 
-        <div class="stat-card reveal">
-          <h3 class="counter" data-target="42">0</h3>
-          <p>% de economia no uso de água</p>
+        <div class="feature-item">
+          <strong>Mais resiliência</strong>
+          <span>Propriedades preparadas para variações climáticas.</span>
         </div>
 
-        <div class="stat-card reveal">
-          <h3 class="counter" data-target="28">0</h3>
-          <p>% de redução de emissões</p>
-        </div>
-
-        <div class="stat-card reveal">
-          <h3 class="counter" data-target="60">0</h3>
-          <p>% mais adoção de tecnologia no campo</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section charts">
-      <div class="section-title">
-        <span>Gráficos</span>
-        <h2>Evolução do agro sustentável</h2>
-      </div>
-
-      <div class="charts-grid">
-        <div class="chart-card reveal">
-          <canvas id="chartSustentavel"></canvas>
-        </div>
-
-        <div class="chart-card reveal">
-          <canvas id="chartTecnologia"></canvas>
+        <div class="feature-item">
+          <strong>Mais valor</strong>
+          <span>Produção com rastreabilidade, reputação e responsabilidade.</span>
         </div>
       </div>
     </section>
 
-    <section id="praticas" class="section">
-      <div class="section-title">
-        <span>Boas práticas</span>
-        <h2>Como o campo se torna mais sustentável</h2>
+    <!-- DADOS REAIS -->
+    <section id="dados" class="section data-section">
+      <div class="section-title reveal">
+        <span class="section-tag">Dados reais</span>
+        <h2>O agro brasileiro em números</h2>
+        <p>
+          Indicadores baseados em fontes públicas como Conab, Embrapa e Plano ABC+.
+        </p>
       </div>
 
-      <div class="cards-grid">
-        <article class="card reveal">
+      <div class="data-grid">
+        <article class="data-card highlight reveal">
+          <span>Plano ABC+</span>
+          <h3><span class="counter" data-target="72.68">0</span> mi ha</h3>
+          <p>
+            Meta de adoção de tecnologias de produção sustentável até 2030.
+          </p>
+        </article>
+
+        <article class="data-card reveal">
+          <span>Plano ABC+</span>
+          <h3><span class="counter" data-target="1.1">0</span> bi tCO₂e</h3>
+          <p>
+            Potencial de mitigação de emissões previsto pelo plano até 2030.
+          </p>
+        </article>
+
+        <article class="data-card reveal">
+          <span>Embrapa Territorial</span>
+          <h3><span class="counter" data-target="218">0</span> mi ha</h3>
+          <p>
+            Áreas destinadas à preservação da vegetação nativa em imóveis rurais.
+          </p>
+        </article>
+
+        <article class="data-card reveal">
+          <span>Brasil</span>
+          <h3><span class="counter" data-target="24.2">0</span>%</h3>
+          <p>
+            Participação das áreas protegidas em relação ao território brasileiro.
+          </p>
+        </article>
+      </div>
+
+      <p class="source-note reveal">
+        Fontes: Embrapa, Conab e Ministério da Agricultura/Plano ABC+.
+      </p>
+    </section>
+
+    <!-- GRÁFICOS -->
+    <section id="graficos" class="section charts-section">
+      <div class="section-title reveal">
+        <span class="section-tag">Visualização</span>
+        <h2>Gráficos maiores e mais claros</h2>
+        <p>
+          Dados organizados para apresentação escolar, institucional ou profissional.
+        </p>
+      </div>
+
+      <div class="charts-layout">
+        <div class="chart-box large reveal">
+          <h3>Metas do Plano ABC+ até 2030</h3>
+          <canvas id="abcChart"></canvas>
+        </div>
+
+        <div class="chart-box large reveal">
+          <h3>Áreas ambientais e agropecuárias no Brasil</h3>
+          <canvas id="areaChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRÁTICAS -->
+    <section id="praticas" class="section practices-section">
+      <div class="section-title reveal">
+        <span class="section-tag">Na prática</span>
+        <h2>Práticas sustentáveis que fortalecem a propriedade</h2>
+      </div>
+
+      <div class="practice-grid">
+        <article class="practice-card reveal">
+          <div class="icon">🌱</div>
           <h3>Plantio direto</h3>
-          <p>Protege o solo, reduz erosão, conserva umidade e melhora a fertilidade natural.</p>
+          <p>
+            Conserva o solo, reduz erosão, mantém cobertura vegetal e melhora a infiltração de água.
+          </p>
         </article>
 
-        <article class="card reveal">
+        <article class="practice-card reveal">
+          <div class="icon">🌳</div>
           <h3>ILPF</h3>
-          <p>Integra lavoura, pecuária e floresta, aumentando produtividade e equilíbrio ambiental.</p>
+          <p>
+            Integra lavoura, pecuária e floresta para ampliar produtividade e equilíbrio ambiental.
+          </p>
         </article>
 
-        <article class="card reveal">
+        <article class="practice-card reveal">
+          <div class="icon">🛰️</div>
           <h3>Agricultura de precisão</h3>
-          <p>Usa dados para aplicar água, fertilizantes e defensivos apenas onde necessário.</p>
+          <p>
+            Usa mapas, sensores e dados para aplicar insumos no lugar certo e na dose certa.
+          </p>
         </article>
 
-        <article class="card reveal">
+        <article class="practice-card reveal">
+          <div class="icon">🧬</div>
           <h3>Bioinsumos</h3>
-          <p>Reduzem dependência química e fortalecem o manejo biológico do solo.</p>
+          <p>
+            Apoiam o manejo biológico, melhoram o solo e reduzem dependência de alguns químicos.
+          </p>
         </article>
 
-        <article class="card reveal">
-          <h3>Áreas degradadas</h3>
-          <p>A recuperação melhora o solo, amplia a produção e protege a biodiversidade.</p>
+        <article class="practice-card reveal">
+          <div class="icon">💧</div>
+          <h3>Uso racional da água</h3>
+          <p>
+            Irrigação inteligente reduz desperdício e aumenta eficiência em períodos críticos.
+          </p>
         </article>
 
-        <article class="card reveal">
+        <article class="practice-card reveal">
+          <div class="icon">☀️</div>
           <h3>Energia renovável</h3>
-          <p>Energia solar, biogás e biomassa tornam a propriedade mais eficiente e limpa.</p>
+          <p>
+            Energia solar, biogás e biomassa reduzem custos e tornam a fazenda mais eficiente.
+          </p>
         </article>
       </div>
     </section>
 
-    <section class="section gallery">
-      <div class="section-title">
-        <span>Imagens</span>
-        <h2>Campo, tecnologia e natureza em equilíbrio</h2>
+    <!-- GALERIA -->
+    <section class="section gallery-section">
+      <div class="section-title reveal">
+        <span class="section-tag">Inspiração visual</span>
+        <h2>O campo que une força, beleza e tecnologia</h2>
       </div>
 
       <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=700&q=80" alt="Plantação">
-        <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=700&q=80" alt="Agricultura">
-        <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=700&q=80" alt="Estufa">
-        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=700&q=80" alt="Natureza">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80" alt="Campo agrícola">
+        <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=900&q=80" alt="Lavoura verde">
+        <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=900&q=80" alt="Estufa agrícola">
+        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80" alt="Produção no campo">
       </div>
     </section>
 
-    <section class="section curiosities">
-      <div class="section-title">
-        <span>Curiosidades</span>
-        <h2>Você sabia?</h2>
+    <!-- CURIOSIDADES -->
+    <section id="curiosidades" class="section curiosities-section">
+      <div class="section-title reveal">
+        <span class="section-tag">Curiosidades</span>
+        <h2>Detalhes que mudam a visão sobre o agro</h2>
       </div>
 
-      <div class="cards-grid">
-        <div class="card reveal">
-          <h3>Solo vivo</h3>
-          <p>Um solo saudável abriga milhões de microrganismos essenciais para a produção.</p>
+      <div class="curiosity-grid">
+        <div class="curiosity-card reveal">
+          <h3>Solo é patrimônio</h3>
+          <p>
+            Um solo bem manejado produz melhor, segura mais água e reduz perdas por erosão.
+          </p>
         </div>
 
-        <div class="card reveal">
-          <h3>Água inteligente</h3>
-          <p>Sensores podem indicar exatamente quando e quanto irrigar.</p>
+        <div class="curiosity-card reveal">
+          <h3>Dado virou insumo</h3>
+          <p>
+            Hoje, mapas, imagens e sensores ajudam o produtor a decidir com mais precisão.
+          </p>
         </div>
 
-        <div class="card reveal">
-          <h3>Drones no campo</h3>
-          <p>Drones ajudam a mapear falhas, pragas e necessidades da lavoura.</p>
+        <div class="curiosity-card reveal">
+          <h3>Preservar também protege</h3>
+          <p>
+            Áreas de vegetação ajudam no equilíbrio hídrico, na biodiversidade e na estabilidade ambiental.
+          </p>
+        </div>
+
+        <div class="curiosity-card reveal">
+          <h3>Produtividade não é só área</h3>
+          <p>
+            O grande salto está em produzir melhor por hectare, com eficiência e tecnologia.
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="quiz" class="section quiz-section">
-      <div class="section-title">
-        <span>Quiz</span>
-        <h2>Teste seus conhecimentos</h2>
-      </div>
-
-      <div class="quiz-box reveal">
-        <h3 id="question">Pergunta</h3>
-        <div id="answers" class="answers"></div>
-        <button id="nextBtn" class="btn primary">Próxima</button>
-        <div id="result" class="result"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">
-        <span>Mitos e verdades</span>
-        <h2>Quebrando ideias antigas sobre o agro</h2>
+    <!-- MITOS -->
+    <section id="mitos" class="section myths-section">
+      <div class="section-title reveal">
+        <span class="section-tag">Mitos e verdades</span>
+        <h2>O que precisa ser entendido com seriedade</h2>
       </div>
 
       <div class="accordion">
         <div class="accordion-item reveal">
-          <button>“Sustentabilidade reduz produtividade.”</button>
-          <p>MITO. Com tecnologia e manejo correto, práticas sustentáveis podem aumentar eficiência e reduzir perdas.</p>
+          <button>Sustentabilidade é custo?</button>
+          <p>
+            Mito. Sustentabilidade bem aplicada pode reduzir desperdícios, melhorar produtividade
+            e aumentar a competitividade da propriedade.
+          </p>
         </div>
 
         <div class="accordion-item reveal">
-          <button>“Tecnologia ajuda a preservar recursos naturais.”</button>
-          <p>VERDADE. Dados, sensores e automação permitem usar menos água, energia e insumos.</p>
+          <button>Tecnologia é só para grandes produtores?</button>
+          <p>
+            Mito. Há soluções escaláveis para pequenos, médios e grandes produtores,
+            desde aplicativos simples até sensores e automação.
+          </p>
         </div>
 
         <div class="accordion-item reveal">
-          <button>“Preservar áreas naturais também protege a produção.”</button>
-          <p>VERDADE. Biodiversidade, água e solo equilibrado fortalecem a propriedade no longo prazo.</p>
+          <button>Preservação ambiental pode fortalecer a produção?</button>
+          <p>
+            Verdade. Água, solo, biodiversidade e clima equilibrado são pilares da produção rural.
+          </p>
+        </div>
+
+        <div class="accordion-item reveal">
+          <button>O agro do futuro será mais rastreável?</button>
+          <p>
+            Verdade. Mercados consumidores exigem cada vez mais origem, qualidade,
+            responsabilidade ambiental e transparência.
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="futuro" class="section future">
+    <!-- QUIZ -->
+    <section id="quiz" class="section quiz-section">
+      <div class="section-title reveal">
+        <span class="section-tag">Quiz interativo</span>
+        <h2>Você entende de agro sustentável?</h2>
+      </div>
+
+      <div class="quiz-box reveal">
+        <div class="quiz-progress">
+          <span id="quizStep">Pergunta 1</span>
+          <span id="quizScore">Pontuação: 0</span>
+        </div>
+
+        <h3 id="question">Pergunta</h3>
+
+        <div id="answers" class="answers"></div>
+
+        <button id="nextBtn" class="btn primary">Próxima pergunta</button>
+
+        <div id="result" class="result"></div>
+      </div>
+    </section>
+
+    <!-- FUTURO -->
+    <section id="futuro" class="section future-section">
       <div class="future-content reveal">
-        <span>Futuro do agro</span>
-        <h2>O campo será cada vez mais digital, regenerativo e inteligente</h2>
-        <p>
-          O futuro do agronegócio passa por inteligência artificial, rastreabilidade,
-          sensores conectados, drones, irrigação inteligente, máquinas autônomas,
-          energia limpa e agricultura regenerativa.
-        </p>
-        <p>
-          O produtor do futuro será também gestor de dados, recursos naturais e impacto ambiental.
-          O agro forte será aquele que produz bem, preserva melhor e pensa além da próxima safra.
-        </p>
-      </div>
-    </section>
+        <span class="section-tag">Próxima safra do mundo</span>
+        <h2>O futuro do agro será digital, regenerativo e estratégico.</h2>
 
-    <section class="final-section">
-      <h2>Produzir hoje com responsabilidade é proteger o futuro de todos.</h2>
-      <a href="#inicio" class="btn primary">Voltar ao topo</a>
+        <p>
+          Inteligência artificial, drones, sensores, satélites, irrigação inteligente,
+          rastreabilidade, biotecnologia e agricultura regenerativa farão parte de uma
+          nova etapa do agronegócio.
+        </p>
+
+        <p>
+          O produtor do futuro será também gestor de dados, recursos naturais,
+          reputação e eficiência. E quem entender isso primeiro, colhe antes.
+        </p>
+
+        <a href="#inicio" class="btn secondary">Voltar ao topo</a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>Projeto educativo — Agro Forte e Futuro Sustentável</p>
+  <footer class="footer">
+    <p>
+      Agro Forte e Futuro Sustentável — projeto educativo e institucional.
+    </p>
   </footer>
 
   <script src="script.js"></script>
