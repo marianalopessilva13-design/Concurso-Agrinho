@@ -1,323 +1,259 @@
-AOS.init({
-  duration: 900,
-  once: true,
-  offset: 90
-});
+// ================================
+// ANIMAÇÃO DOS CONTADORES
+// ================================
 
-/* =========================
-   GRÁFICOS COM CHART.JS
-========================= */
+const counters = document.querySelectorAll(".counter");
 
-const chartOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: true
+function animarContadores() {
+    counters.forEach(counter => {
+        let valorFinal = Number(counter.dataset.value);
+        let valorAtual = 0;
+        let velocidade = 25;
+
+        let contador = setInterval(() => {
+            valorAtual++;
+            counter.textContent = valorAtual;
+
+            if (valorAtual >= valorFinal) {
+                clearInterval(contador);
+            }
+        }, velocidade);
+    });
+}
+
+animarContadores();
+
+
+// ================================
+// GRÁFICO - CHART JS
+// ================================
+
+const ctx = document.getElementById("grafico1");
+
+new Chart(ctx, {
+    type: "line",
+
+    data: {
+        labels: ["2022", "2023", "2024", "2025", "2026"],
+
+        datasets: [{
+            label: "Evolução de práticas sustentáveis no agro (%)",
+            data: [25, 38, 50, 67, 82],
+            borderWidth: 4,
+            tension: .4,
+            fill: true,
+            pointRadius: 5,
+            pointHoverRadius: 8
+        }]
     },
-    tooltip: {
-      enabled: true
+
+    options: {
+        responsive: true,
+
+        plugins: {
+            legend: {
+                display: true
+            }
+        },
+
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
     }
-  },
-  animation: {
-    duration: 1800
-  }
-};
-
-new Chart(document.getElementById("barChart"), {
-  type: "bar",
-  data: {
-    labels: ["2010", "2024"],
-    datasets: [
-      {
-        label: "Produção global de cereais em bilhões de toneladas",
-        data: [2.44, 3.10],
-        backgroundColor: ["#00B8D4", "#00C853"]
-      }
-    ]
-  },
-  options: chartOptions
 });
 
-new Chart(document.getElementById("pieChart"), {
-  type: "pie",
-  data: {
-    labels: ["Agricultura", "Indústria", "Uso doméstico/municipal"],
-    datasets: [
-      {
-        label: "Retiradas globais de água doce",
-        data: [70, 18, 12],
-        backgroundColor: ["#00C853", "#00B8D4", "#795548"]
-      }
-    ]
-  },
-  options: chartOptions
-});
 
-new Chart(document.getElementById("lineChart"), {
-  type: "line",
-  data: {
-    labels: ["2024", "2050", "2080s", "2100"],
-    datasets: [
-      {
-        label: "População mundial projetada em bilhões",
-        data: [8.2, 9.7, 10.3, 10.2],
-        borderColor: "#00C853",
-        backgroundColor: "rgba(0,200,83,.16)",
-        fill: true,
-        tension: 0.35
-      }
-    ]
-  },
-  options: chartOptions
-});
+// ================================
+// QUIZ INTERATIVO
+// ================================
 
-/* =========================
-   MODAL DA GALERIA
-========================= */
+const perguntas = [
+    {
+        pergunta: "Qual prática agrícola ajuda a preservar o solo?",
+        respostas: [
+            "Plantio direto",
+            "Desmatamento",
+            "Uso excessivo de água"
+        ],
+        correta: 0
+    },
 
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modalImg");
+    {
+        pergunta: "Qual tecnologia auxilia no monitoramento das plantações?",
+        respostas: [
+            "Drones e sensores",
+            "Queimadas",
+            "Retirada de matas"
+        ],
+        correta: 0
+    },
 
-document.querySelectorAll(".gallery img").forEach((img) => {
-  img.addEventListener("click", () => {
-    modal.classList.add("active");
-    modalImg.src = img.src;
-  });
-});
+    {
+        pergunta: "O que significa produzir de forma sustentável?",
+        respostas: [
+            "Equilibrar produção e preservação",
+            "Produzir sem planejamento",
+            "Utilizar todos os recursos naturais rapidamente"
+        ],
+        correta: 0
+    },
 
-modal.addEventListener("click", () => {
-  modal.classList.remove("active");
-});
+    {
+        pergunta: "Qual fonte de energia combina com um agro mais sustentável?",
+        respostas: [
+            "Energia solar",
+            "Maior desperdício energético",
+            "Menos tecnologia"
+        ],
+        correta: 0
+    },
 
-/* =========================
-   QUIZ INTERATIVO
-========================= */
-
-const quiz = [
-  {
-    q: "O que é agricultura sustentável?",
-    a: [
-      "Produzir sem pensar no ambiente",
-      "Produzir conciliando produtividade e conservação",
-      "Parar totalmente a produção agrícola",
-      "Usar apenas máquinas antigas"
-    ],
-    correct: 1,
-    exp: "Agricultura sustentável busca produzir alimentos conservando solo, água, biodiversidade e clima."
-  },
-  {
-    q: "Qual setor responde por cerca de 70% das retiradas globais de água doce?",
-    a: [
-      "Transporte",
-      "Agricultura",
-      "Turismo",
-      "Construção civil"
-    ],
-    correct: 1,
-    exp: "Segundo UNESCO e FAO, a agricultura representa aproximadamente 70% das retiradas globais de água doce."
-  },
-  {
-    q: "Qual tecnologia ajuda a aplicar insumos apenas onde necessário?",
-    a: [
-      "Agricultura de precisão",
-      "Queimada",
-      "Monocultura sem controle",
-      "Desmatamento"
-    ],
-    correct: 0,
-    exp: "A agricultura de precisão usa mapas, sensores e GPS para reduzir desperdícios."
-  },
-  {
-    q: "O que significa ILPF?",
-    a: [
-      "Integração Lavoura-Pecuária-Floresta",
-      "Índice Local de Produção de Frutas",
-      "Irrigação Livre Para Fazendas",
-      "Instituto Legal de Plantio Fixo"
-    ],
-    correct: 0,
-    exp: "ILPF significa Integração Lavoura-Pecuária-Floresta, um sistema que combina produção agrícola, criação de animais e árvores na mesma área."
-  },
-  {
-    q: "Qual prática ajuda a reduzir erosão?",
-    a: [
-      "Solo descoberto",
-      "Plantio direto e cobertura vegetal",
-      "Remover matas ciliares",
-      "Usar água sem controle"
-    ],
-    correct: 1,
-    exp: "A cobertura vegetal protege o solo contra chuva forte, vento e perda de nutrientes."
-  },
-  {
-    q: "Qual ferramenta pode monitorar lavouras por imagens aéreas?",
-    a: [
-      "Drone",
-      "Martelo",
-      "Bússola escolar",
-      "Trena manual apenas"
-    ],
-    correct: 0,
-    exp: "Drones permitem detectar falhas, pragas e estresse hídrico com rapidez."
-  },
-  {
-    q: "O que são bioinsumos?",
-    a: [
-      "Produtos biológicos usados no manejo agrícola",
-      "Apenas combustíveis fósseis",
-      "Plásticos descartáveis",
-      "Produtos sem relação com o campo"
-    ],
-    correct: 0,
-    exp: "Bioinsumos usam microrganismos, extratos ou processos biológicos para apoiar a produção agrícola."
-  },
-  {
-    q: "Qual é uma solução para aumentar produção sem abrir novas áreas?",
-    a: [
-      "Recuperar áreas degradadas",
-      "Desmatar novas áreas",
-      "Abandonar o solo",
-      "Poluir rios"
-    ],
-    correct: 0,
-    exp: "Recuperar áreas degradadas melhora a produtividade e reduz a pressão por desmatamento."
-  },
-  {
-    q: "A inteligência artificial no campo pode ajudar em quê?",
-    a: [
-      "Prever riscos e apoiar decisões",
-      "Eliminar a necessidade de conhecimento técnico",
-      "Substituir a água",
-      "Impedir a fotossíntese"
-    ],
-    correct: 0,
-    exp: "A inteligência artificial cruza dados climáticos, de solo e produção para melhorar decisões no campo."
-  },
-  {
-    q: "Qual é a ideia central do projeto Agroforte?",
-    a: [
-      "Produzir mais e preservar melhor",
-      "Produzir sem planejamento",
-      "Ignorar a tecnologia",
-      "Separar totalmente campo e ciência"
-    ],
-    correct: 0,
-    exp: "O projeto mostra que produtividade e preservação podem caminhar juntas."
-  }
+    {
+        pergunta: "Qual prática integra lavoura, pecuária e floresta?",
+        respostas: [
+            "ILPF",
+            "Queimada descontrolada",
+            "Monocultura sem manejo"
+        ],
+        correta: 0
+    }
 ];
 
-let current = 0;
-let score = 0;
-let answered = false;
+let perguntaAtual = 0;
+let pontos = 0;
+let erros = 0;
 
-const questionEl = document.getElementById("question");
-const answersEl = document.getElementById("answers");
-const explanationEl = document.getElementById("explanation");
-const nextBtn = document.getElementById("nextBtn");
-const resultEl = document.getElementById("result");
-const progressBar = document.getElementById("progressBar");
+const perguntaTexto = document.getElementById("question");
+const respostasBox = document.getElementById("answers");
+const resultado = document.getElementById("result");
+const progresso = document.getElementById("progress");
 
-function loadQuestion() {
-  answered = false;
+function carregarPergunta() {
+    if (perguntaAtual >= perguntas.length) {
+        let mensagem = "";
 
-  const item = quiz[current];
+        if (pontos === perguntas.length) {
+            mensagem = "🌱 Excelente! Você domina o futuro sustentável do agro.";
+        } else if (pontos >= 3) {
+            mensagem = "🚜 Muito bom! Você já conhece várias práticas sustentáveis.";
+        } else {
+            mensagem = "🌎 Continue aprendendo! Grandes mudanças começam com pequenas sementes.";
+        }
 
-  questionEl.style.display = "block";
-  answersEl.style.display = "grid";
-  resultEl.innerHTML = "";
+        progresso.innerHTML = "";
+        perguntaTexto.innerHTML = "Resultado Final";
 
-  questionEl.textContent = `${current + 1}. ${item.q}`;
-  answersEl.innerHTML = "";
+        respostasBox.innerHTML = `
+            <h3>Você acertou ${pontos} e errou ${erros} de ${perguntas.length} perguntas.</h3>
+            <button class="option" onclick="reiniciarQuiz()">Refazer Quiz</button>
+        `;
 
-  explanationEl.style.display = "none";
-  explanationEl.textContent = "";
+        resultado.innerHTML = mensagem;
+        return;
+    }
 
-  nextBtn.style.display = "none";
+    let item = perguntas[perguntaAtual];
 
-  progressBar.style.width = `${(current / quiz.length) * 100}%`;
+    progresso.innerHTML = `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
+    perguntaTexto.innerHTML = item.pergunta;
+    respostasBox.innerHTML = "";
+    resultado.innerHTML = "";
 
-  item.a.forEach((answer, index) => {
-    const div = document.createElement("div");
-    div.className = "answer";
-    div.textContent = answer;
+    item.respostas.forEach((resposta, index) => {
+        let botao = document.createElement("button");
 
-    div.addEventListener("click", () => {
-      selectAnswer(div, index);
+        botao.className = "option";
+        botao.innerHTML = resposta;
+
+        botao.onclick = () => {
+            verificarResposta(index, botao);
+        };
+
+        respostasBox.appendChild(botao);
+    });
+}
+
+function verificarResposta(index, botaoClicado) {
+    const respostaCorreta = perguntas[perguntaAtual].correta;
+    const botoes = document.querySelectorAll(".option");
+
+    botoes.forEach(botao => {
+        botao.disabled = true;
     });
 
-    answersEl.appendChild(div);
-  });
+    if (index === respostaCorreta) {
+        pontos++;
+        botaoClicado.classList.add("correct");
+        resultado.innerHTML = "✅ Resposta correta!";
+    } else {
+        erros++;
+        botaoClicado.classList.add("wrong");
+        botoes[respostaCorreta].classList.add("correct");
+        resultado.innerHTML = "❌ Resposta incorreta. A alternativa correta foi destacada.";
+    }
+
+    setTimeout(() => {
+        perguntaAtual++;
+        carregarPergunta();
+    }, 1300);
 }
 
-function selectAnswer(element, index) {
-  if (answered) return;
-
-  answered = true;
-
-  const item = quiz[current];
-  const allAnswers = document.querySelectorAll(".answer");
-
-  allAnswers[item.correct].classList.add("correct");
-
-  if (index === item.correct) {
-    score++;
-  } else {
-    element.classList.add("wrong");
-  }
-
-  explanationEl.textContent = item.exp;
-  explanationEl.style.display = "block";
-
-  nextBtn.style.display = "inline-flex";
+function reiniciarQuiz() {
+    perguntaAtual = 0;
+    pontos = 0;
+    erros = 0;
+    carregarPergunta();
 }
 
-nextBtn.addEventListener("click", () => {
-  current++;
+carregarPergunta();
 
-  if (current < quiz.length) {
-    loadQuestion();
-  } else {
-    showResult();
-  }
+
+// ================================
+// MITOS E VERDADES - ACCORDION
+// ================================
+
+const botoes = document.querySelectorAll(".accordion button");
+
+botoes.forEach(botao => {
+    botao.addEventListener("click", () => {
+        let texto = botao.nextElementSibling;
+
+        if (texto.style.display === "block") {
+            texto.style.display = "none";
+        } else {
+            texto.style.display = "block";
+        }
+    });
 });
 
-function showResult() {
-  progressBar.style.width = "100%";
 
-  questionEl.style.display = "none";
-  answersEl.style.display = "none";
-  explanationEl.style.display = "none";
-  nextBtn.style.display = "none";
+// ================================
+// EFEITO AO ROLAR A PÁGINA
+// ================================
 
-  const percent = Math.round((score / quiz.length) * 100);
+const elementos = document.querySelectorAll(".card, h2, .chart-box, .quiz-box, .images img");
 
-  let comment = "";
+function animarScroll() {
+    elementos.forEach(elemento => {
+        let posicao = elemento.getBoundingClientRect().top;
+        let alturaTela = window.innerHeight;
 
-  if (percent >= 90) {
-    comment = "Excelente! Você está pronto para defender o agro sustentável em qualquer feira científica.";
-  } else if (percent >= 70) {
-    comment = "Muito bom! Você entendeu bem a conexão entre produção, tecnologia e preservação.";
-  } else if (percent >= 50) {
-    comment = "Bom começo! Revise os dados e tecnologias para fortalecer sua apresentação.";
-  } else {
-    comment = "Continue estudando. Sustentabilidade é uma jornada, não uma corrida de trator.";
-  }
-
-  resultEl.innerHTML = `
-    <h2>Resultado final</h2>
-
-    <p style="font-size:1.3rem;margin-top:16px;">
-      Acertos: <strong>${score}</strong> de <strong>${quiz.length}</strong>
-    </p>
-
-    <p style="font-size:1.3rem;">
-      Nota: <strong>${percent}%</strong>
-    </p>
-
-    <p style="margin-top:16px;color:#dfffee;line-height:1.7;">
-      ${comment}
-    </p>
-  `;
+        if (posicao < alturaTela - 80) {
+            elemento.style.opacity = "1";
+            elemento.style.transform = "translateY(0)";
+        }
+    });
 }
 
-loadQuestion();
+elementos.forEach(elemento => {
+    elemento.style.opacity = "0";
+    elemento.style.transform = "translateY(40px)";
+    elemento.style.transition = ".8s ease";
+});
+
+window.addEventListener("scroll", animarScroll);
+
+animarScroll();
