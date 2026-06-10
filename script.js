@@ -1,139 +1,110 @@
-// ======================
-// GRÁFICOS COM CHART.JS
-// ======================
+// ==========================================
+// 1. ALTERNADOR DO MENU PARA CELULAR
+// ==========================================
+const menuBtn = document.getElementById('menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
 
-// Produção Agrícola
-const ctx1 = document.getElementById('graficoProducao').getContext('2d');
-const graficoProducao = new Chart(ctx1, {
-    type: 'bar',
-    data: {
-        labels: ['Soja', 'Milho', 'Trigo', 'Cana'],
-        datasets: [{
-            label: 'Produção (Toneladas)',
-            data: [1200, 900, 700, 1500],
-            backgroundColor: ['#66BB6A','#1B5E20','#42A5F5','#1565C0']
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { position: 'top' },
-            title: { display: true, text: 'Produção Agrícola por Cultivo' }
-        }
-    }
+menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
 });
 
-// Consumo de Água
-const ctx2 = document.getElementById('graficoAgua').getContext('2d');
-const graficoAgua = new Chart(ctx2, {
+// ==========================================
+// 2. CONFIGURAÇÃO DO GRÁFICO (CHART.JS)
+// ==========================================
+const ctx = document.getElementById('agrinhoChart').getContext('2d');
+new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['2017','2018','2019','2020','2021','2022'],
-        datasets: [{
-            label: 'Consumo de Água (m³)',
-            data: [500, 480, 460, 430, 410, 390],
-            borderColor: '#1565C0',
-            backgroundColor: 'rgba(21,101,192,0.2)',
-            fill: true,
-            tension: 0.4,
-            pointBackgroundColor: '#42A5F5'
-        }]
+        labels: ['2016', '2018', '2020', '2022', '2024', '2026 (Meta)'],
+        datasets: [
+            {
+                label: 'Produtividade Agrícola',
+                data:,
+                borderColor: '#1d3557',
+                backgroundColor: 'rgba(29, 53, 87, 0.1)',
+                borderWidth: 3,
+                tension: 0.3,
+                fill: true
+            },
+            {
+                label: 'Preservação Ambiental (%)',
+                data:,
+                borderColor: '#1b4332',
+                backgroundColor: 'rgba(27, 67, 50, 0.05)',
+                borderWidth: 3,
+                tension: 0.3,
+                fill: true
+            }
+        ]
     },
     options: {
         responsive: true,
-        plugins: {
-            legend: { position: 'top' },
-            title: { display: true, text: 'Redução do Consumo de Água' }
-        }
+        maintainAspectRatio: false
     }
 });
 
-// ======================
-// QUIZ INTERATIVO
-// ======================
-
-const quiz = [
+// ==========================================
+// 3. SISTEMA DO QUIZ INTERATIVO
+// ==========================================
+const quizData = [
     {
-        pergunta: "O que é agricultura sustentável?",
-        opcoes: [
-            "Produzir alimentos sem impacto ambiental",
-            "Usar tecnologia para aumentar produção sem se preocupar com o solo",
-            "Cortar todas as árvores para plantar mais",
-            "Usar apenas fertilizantes químicos"
-        ],
-        respostaCorreta: 0
+        pergunta: "Qual técnica evita a erosão do solo e preserva a água de forma eficiente?",
+        opcoes: ["Queimada controlada", "Plantio Direto na palhada", "Arado profundo contínuo"],
+        correta: 1
     },
     {
-        pergunta: "Qual fonte de energia é considerada limpa no agro?",
-        opcoes: ["Solar", "Carvão", "Óleo diesel", "Gás natural"],
-        respostaCorreta: 0
-    },
-    {
-        pergunta: "O que é plantio direto?",
-        opcoes: [
-            "Plantar sem arar o solo, preservando nutrientes",
-            "Usar máquinas para remover toda a vegetação",
-            "Queimar a área antes do plantio",
-            "Plantar apenas em áreas urbanas"
-        ],
-        respostaCorreta: 0
-    },
-    {
-        pergunta: "Verdadeiro ou falso: Agricultura de precisão usa tecnologia para reduzir desperdício.",
-        opcoes: ["Verdadeiro", "Falso"],
-        respostaCorreta: 0
+        pergunta: "De que maneira os drones e a tecnologia de precisão auxiliam o meio ambiente?",
+        opcoes: ["Aumentando o consumo de água", "Aplicando insumos apenas onde é necessário", "Substituindo a fotossíntese"],
+        correta: 1
     }
 ];
 
 let currentQuestion = 0;
 let score = 0;
+const quizBox = document.getElementById('quiz-box');
 
-const perguntaEl = document.getElementById('pergunta');
-const opcoesEl = document.getElementById('opcoes');
-const resultadoEl = document.getElementById('resultado');
-const proximaBtn = document.getElementById('proxima');
-
-function loadQuestion() {
-    resultadoEl.textContent = '';
-    const q = quiz[currentQuestion];
-    perguntaEl.textContent = q.pergunta;
-    opcoesEl.innerHTML = '';
-    q.opcoes.forEach((opcao, i) => {
-        const button = document.createElement('button');
-        button.textContent = opcao;
-        button.classList.add('btn');
-        button.style.display = 'block';
-        button.style.margin = '10px auto';
-        button.onclick = () => checkAnswer(i);
-        opcoesEl.appendChild(button);
-    });
+function loadQuiz() {
+    if (currentQuestion < quizData.length) {
+        const q = quizData[currentQuestion];
+        quizBox.innerHTML = `
+            <div>
+                <h3 class="font-serif text-lg font-medium text-white mb-6">${q.pergunta}</h3>
+                <div class="flex flex-col gap-3">
+                    ${q.opcoes.map((opcao, idx) => `
+                        <button onclick="selectOption(${idx})" class="w-full text-left bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl p-4 transition-all">
+                            ${opcao}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    } else {
+        showResult();
+    }
 }
 
-function checkAnswer(selected) {
-    const q = quiz[currentQuestion];
-    if(selected === q.respostaCorreta){
+window.selectOption = function(index) {
+    if (index === quizData[currentQuestion].correta) {
         score++;
-        resultadoEl.textContent = "Correto!";
-        resultadoEl.style.color = "#66BB6A";
-    } else {
-        resultadoEl.textContent = `Errado! Resposta correta: ${q.opcoes[q.respostaCorreta]}`;
-        resultadoEl.style.color = "#E53935";
     }
-    proximaBtn.style.display = 'inline-block';
+    currentQuestion++;
+    loadQuiz();
+};
+
+function showResult() {
+    quizBox.innerHTML = `
+        <div class="text-center py-6">
+            <h3 class="font-serif text-2xl font-bold text-white mb-2">Quiz Concluído!</h3>
+            <p class="text-slate-300 text-sm mb-4">Você acertou ${score} de ${quizData.length} perguntas.</p>
+            <button onclick="resetQuiz()" class="bg-white text-slate-900 font-semibold px-6 py-2 rounded-xl text-xs uppercase tracking-wider">Refazer</button>
+        </div>
+    `;
 }
 
-proximaBtn.addEventListener('click', () => {
-    currentQuestion++;
-    if(currentQuestion < quiz.length){
-        loadQuestion();
-        proximaBtn.style.display = 'none';
-    } else {
-        perguntaEl.textContent = `Quiz finalizado! Sua pontuação: ${score} / ${quiz.length}`;
-        opcoesEl.innerHTML = '';
-        proximaBtn.style.display = 'none';
-    }
-});
+window.resetQuiz = function() {
+    currentQuestion = 0;
+    score = 0;
+    loadQuiz();
+};
 
-// Inicializa o quiz
-loadQuestion();
-proximaBtn.style.display = 'none';
+loadQuiz();
