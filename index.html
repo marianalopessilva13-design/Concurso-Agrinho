@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agrinho 2026 – Agro Forte e Futuro Sustentável</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Para gráficos -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -15,20 +15,21 @@
     <video autoplay muted loop class="hero-video">
       <source src="videos/hero.mp4" type="video/mp4">
     </video>
+    <div class="overlay"></div>
     <div class="hero-content">
       <h1>AGRO FORTE E FUTURO SUSTENTÁVEL</h1>
       <p>Produzir mais, preservar melhor e garantir qualidade de vida para as próximas gerações.</p>
       <div class="hero-buttons">
         <a href="#sobre" class="btn">Explorar Projeto</a>
-        <a href="#quiz" class="btn btn-secondary">Iniciar Jornada Sustentável</a>
+        <a href="#quiz" class="btn btn-secondary">Iniciar Quiz Sustentável</a>
       </div>
     </div>
   </section>
 
   <!-- SOBRE O AGRINHO -->
-  <section id="sobre" class="section">
+  <section id="sobre" class="section full-height">
     <h2>Sobre o Agrinho</h2>
-    <p>História, objetivos educacionais, importância para escolas e comunidades, formação cidadã e desenvolvimento sustentável.</p>
+    <p>História do programa, objetivos educacionais, importância para escolas e comunidades, formação cidadã e desenvolvimento sustentável.</p>
     <div class="timeline">
       <div class="timeline-item">2010 - Início do Agrinho</div>
       <div class="timeline-item">2015 - Expansão Nacional</div>
@@ -38,44 +39,53 @@
   </section>
 
   <!-- AGRO E SUSTENTABILIDADE -->
-  <section id="agro" class="section">
+  <section id="agro" class="section full-height">
     <h2>O Agro que Alimenta o Mundo</h2>
     <div class="cards">
       <div class="card">
+        <img src="images/agricultura1.jpg" alt="Agricultura Familiar">
         <h3>Agricultura Familiar</h3>
         <p>Produção de alimentos e desenvolvimento econômico sustentável.</p>
       </div>
       <div class="card">
+        <img src="images/agricultura2.jpg" alt="Agricultura de Precisão">
         <h3>Agricultura de Precisão</h3>
         <p>Tecnologia aplicada ao campo para maior produtividade e preservação ambiental.</p>
       </div>
       <div class="card">
+        <img src="images/agricultura3.jpg" alt="Sustentabilidade">
         <h3>Sustentabilidade</h3>
         <p>Práticas agrícolas que respeitam a natureza e reduzem impactos ambientais.</p>
       </div>
     </div>
   </section>
 
-  <!-- GALERIA MULTIMÍDIA -->
-  <section id="galeria" class="section">
+  <!-- GALERIA -->
+  <section id="galeria" class="section full-height">
     <h2>Galeria Multimídia</h2>
     <div class="gallery">
-      <img src="images/fazenda1.jpg" alt="Fazenda Sustentável">
-      <img src="images/fazenda2.jpg" alt="Agricultura Familiar">
-      <img src="images/fazenda3.jpg" alt="Agrofloresta">
+      <div class="gallery-item">
+        <img src="images/fazenda1.jpg" alt="Fazenda Sustentável">
+      </div>
+      <div class="gallery-item">
+        <img src="images/fazenda2.jpg" alt="Agrofloresta">
+      </div>
+      <div class="gallery-item">
+        <img src="images/fazenda3.jpg" alt="Energia Renovável">
+      </div>
     </div>
   </section>
 
-  <!-- GRÁFICOS INTERATIVOS -->
-  <section id="graficos" class="section">
-    <h2>Centro de Dados</h2>
+  <!-- GRÁFICOS -->
+  <section id="graficos" class="section full-height">
+    <h2>Centro de Dados Interativo</h2>
     <canvas id="graficoProducao"></canvas>
     <canvas id="graficoAgua"></canvas>
   </section>
 
   <!-- QUIZ INTERATIVO -->
-  <section id="quiz" class="section">
-    <h2>Quiz Interativo</h2>
+  <section id="quiz" class="section full-height">
+    <h2>Quiz Sustentável</h2>
     <div class="quiz-container">
       <p id="pergunta"></p>
       <div id="opcoes"></div>
