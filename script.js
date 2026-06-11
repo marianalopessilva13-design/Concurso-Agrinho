@@ -189,13 +189,20 @@ function verificarResposta(correta, botaoClicado) {
     } else {
         erros++;
         botaoClicado.classList.add("wrong");
-        resultado.innerHTML = "❌ Resposta incorreta.";
+
+        botoes.forEach(botao => {
+            if (botao.onclick.toString().includes("true")) {
+                botao.classList.add("correct");
+            }
+        });
+
+        resultado.innerHTML = "❌ Resposta incorreta. A resposta correta foi destacada.";
     }
 
     setTimeout(() => {
         perguntaAtual++;
         carregarPergunta();
-    }, 1300);
+    }, 1400);
 }
 
 function reiniciarQuiz() {
