@@ -3,6 +3,7 @@ CONFIGURAÇÕES GERAIS
 ============================== */
 
 :root {
+
     --verde-escuro: #0b3d1e;
     --verde-musgo: #246b35;
     --verde-medio: #16a34a;
@@ -16,30 +17,41 @@ CONFIGURAÇÕES GERAIS
 
     --sombra:
     0px 15px 45px rgba(18,53,36,0.18);
+
 }
+
 
 
 *{
+
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
+
     scroll-behavior:smooth;
+
 }
 
 
+
 body{
+
     background:
+
     linear-gradient(
-        180deg,
-        #f7fff2,
-        #e8f7df
+    180deg,
+    #f7fff2,
+    #e8f7df
     );
 
     color:var(--texto);
 
-    font-family:'Inter', sans-serif;
+    font-family:'Inter',sans-serif;
 
     overflow-x:hidden;
+
 }
 
 
@@ -60,7 +72,8 @@ header{
     z-index:1000;
 
     background:
-    rgba(247,255,242,0.90);
+
+    rgba(247,255,242,0.92);
 
     backdrop-filter:blur(18px);
 
@@ -103,8 +116,6 @@ header{
 
 
 
-/* MENU */
-
 .menu{
 
     display:flex;
@@ -139,8 +150,6 @@ header{
 
 
 
-/* MOBILE */
-
 .menu-mobile{
 
     display:none;
@@ -163,8 +172,6 @@ header{
 
 
 
-
-
 /* ==============================
 HERO
 ============================== */
@@ -173,7 +180,6 @@ HERO
 .hero{
 
     min-height:100vh;
-
 
     background:
 
@@ -188,7 +194,6 @@ HERO
     background-size:cover;
 
     background-position:center;
-
 
     display:flex;
 
@@ -206,8 +211,7 @@ HERO
 
     color:white;
 
-    animation:
-    subir 1s ease;
+    animation:subir 1s ease;
 
 }
 
@@ -219,15 +223,13 @@ HERO
 
     padding:10px 25px;
 
-    background:
-    rgba(255,255,255,.20);
+    background:rgba(255,255,255,.20);
 
     border-radius:50px;
 
     margin-bottom:25px;
 
-    border:
-    1px solid rgba(255,255,255,.3);
+    border:1px solid rgba(255,255,255,.3);
 
 }
 
@@ -237,8 +239,7 @@ h1{
 
     font-family:'Playfair Display',serif;
 
-    font-size:
-    clamp(55px,8vw,105px);
+    font-size:clamp(55px,8vw,105px);
 
     line-height:.95;
 
@@ -252,15 +253,14 @@ h2{
 
     font-family:'Playfair Display',serif;
 
-    font-size:
-    clamp(36px,5vw,60px);
+    font-size:clamp(36px,5vw,60px);
 
     color:var(--verde-medio);
 
     margin-bottom:25px;
 
     text-shadow:
-    0 5px 20px rgba(22,163,74,.25);
+    0 5px 20px rgba(22,163,74,.30);
 
 }
 
@@ -276,16 +276,17 @@ h2::after{
 
     height:5px;
 
+    margin-top:15px;
+
+    border-radius:20px;
+
     background:
+
     linear-gradient(
     90deg,
     var(--verde-medio),
     var(--verde-claro)
     );
-
-    border-radius:20px;
-
-    margin-top:15px;
 
 }
 
@@ -305,16 +306,17 @@ h3{
 
     font-size:22px;
 
-    margin-bottom:35px;
-
     line-height:1.6;
+
+    margin-bottom:35px;
 
 }
 
 
 
-
-/* BOTÕES */
+/* ==============================
+BOTÕES
+============================== */
 
 
 .buttons{
@@ -368,7 +370,6 @@ h3{
     color:white;
 
 }
-
 
 
 
@@ -442,7 +443,6 @@ CARDS
 ============================== */
 
 
-
 .cards,
 .grid,
 .stats{
@@ -450,6 +450,7 @@ CARDS
     display:grid;
 
     grid-template-columns:
+
     repeat(auto-fit,minmax(250px,1fr));
 
     gap:25px;
@@ -462,10 +463,6 @@ CARDS
 
 .card{
 
-    position:relative;
-
-    overflow:hidden;
-
     background:white;
 
     padding:32px;
@@ -475,6 +472,10 @@ CARDS
     box-shadow:var(--sombra);
 
     transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
 
 }
 
@@ -490,10 +491,11 @@ CARDS
 
     height:90px;
 
-    background:
-    rgba(22,163,74,.10);
-
     border-radius:50%;
+
+    background:
+
+    rgba(22,163,74,.10);
 
     top:-30px;
 
@@ -505,8 +507,7 @@ CARDS
 
 .card:hover{
 
-    transform:
-    translateY(-10px);
+    transform:translateY(-10px);
 
 }
 
@@ -530,9 +531,9 @@ CARDS
 
 
 
-
-
-/* ESTATÍSTICAS */
+/* ==============================
+ESTATÍSTICAS
+============================== */
 
 
 .stats div{
@@ -561,15 +562,16 @@ CARDS
 
 
 
-
-/* GRÁFICO */
+/* ==============================
+GRÁFICO
+============================== */
 
 
 .chart-box{
 
-    margin-top:40px;
-
     max-width:850px;
+
+    margin-top:40px;
 
     background:white;
 
@@ -583,9 +585,9 @@ CARDS
 
 
 
-
-
-/* GALERIA */
+/* ==============================
+GALERIA
+============================== */
 
 
 .gallery{
@@ -609,6 +611,7 @@ CARDS
     display:grid;
 
     grid-template-columns:
+
     repeat(auto-fit,minmax(280px,1fr));
 
     gap:25px;
@@ -629,10 +632,10 @@ CARDS
 
     border-radius:30px;
 
-    transition:.4s;
-
     box-shadow:
     0 20px 45px rgba(0,0,0,.25);
+
+    transition:.4s;
 
 }
 
@@ -646,8 +649,9 @@ CARDS
 
 
 
-
-/* QUIZ */
+/* ==============================
+QUIZ
+============================== */
 
 
 .quiz-box{
@@ -682,9 +686,9 @@ CARDS
 
     width:100%;
 
-    margin:12px 0;
-
     padding:15px;
+
+    margin:12px 0;
 
     border:none;
 
@@ -692,9 +696,9 @@ CARDS
 
     background:#eef5e5;
 
-    font-weight:800;
-
     cursor:pointer;
+
+    font-weight:800;
 
 }
 
@@ -724,9 +728,9 @@ CARDS
 
 
 
-
-
-/* MITOS */
+/* ==============================
+MITOS
+============================== */
 
 
 .accordion{
@@ -745,13 +749,13 @@ CARDS
 
     margin-top:15px;
 
-    background:var(--verde-musgo);
-
-    color:white;
-
     border:none;
 
     border-radius:15px;
+
+    background:var(--verde-musgo);
+
+    color:white;
 
     font-weight:800;
 
@@ -765,9 +769,9 @@ CARDS
 
     display:none;
 
-    background:white;
-
     padding:20px;
+
+    background:white;
 
     border-radius:15px;
 
@@ -775,9 +779,9 @@ CARDS
 
 
 
-
-
-/* FUTURO */
+/* ==============================
+FINAL
+============================== */
 
 
 .future{
@@ -795,8 +799,6 @@ CARDS
     background-size:cover;
 
 }
-
-
 
 
 
@@ -840,19 +842,21 @@ CARDS
 
 footer{
 
-    padding:40px;
+    padding:45px;
+
+    text-align:center;
 
     background:#07180f;
 
     color:white;
-
-    text-align:center;
 
     line-height:1.8;
 
 }
 
 
+
+/* ANIMAÇÃO */
 
 
 @keyframes subir{
@@ -864,6 +868,7 @@ opacity:0;
 transform:translateY(40px);
 
 }
+
 
 to{
 
@@ -906,11 +911,13 @@ flex-direction:column;
 }
 
 
+
 .menu.active{
 
 display:flex;
 
 }
+
 
 
 .menu-mobile{
@@ -920,11 +927,13 @@ display:block;
 }
 
 
+
 .buttons{
 
 flex-direction:column;
 
 }
+
 
 
 .section{
@@ -934,10 +943,12 @@ padding:80px 6%;
 }
 
 
+
 .hero p{
 
 font-size:18px;
 
 }
+
 
 }
