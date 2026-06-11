@@ -550,11 +550,45 @@ ESTATÍSTICAS
 
 
 
-.counter{
+.stats strong{
+
+    font-size:60px;
+
+    color:var(--verde-medio);
 
     display:block;
 
-    font-size:60px;
+    margin-bottom:15px;
+
+}
+
+
+
+.stats h3{
+
+    color:var(--verde-escuro);
+
+    margin-bottom:12px;
+
+    font-size:22px;
+
+}
+
+
+
+.stats p{
+
+    font-size:16px;
+
+    line-height:1.6;
+
+    color:var(--texto);
+
+}
+
+
+
+.counter{
 
     color:var(--verde-medio);
 
@@ -580,6 +614,24 @@ GRÁFICO
     border-radius:30px;
 
     box-shadow:var(--sombra);
+
+}
+
+
+
+.chart-note{
+
+    max-width:850px;
+
+    margin-top:25px;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    color:var(--verde-escuro);
+
+    font-weight:700;
 
 }
 
@@ -824,6 +876,8 @@ FINAL
 
     color:white;
 
+    text-align:center;
+
 }
 
 
@@ -835,6 +889,20 @@ FINAL
     margin-right:auto;
 
     background:white;
+
+}
+
+
+
+.final-message p{
+
+    max-width:950px;
+
+    margin:0 auto;
+
+    text-align:center;
+
+    line-height:1.8;
 
 }
 
